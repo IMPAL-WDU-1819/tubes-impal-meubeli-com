@@ -185,24 +185,7 @@ a:not([href]):not([tabindex]):hover, a:not([href]):not([tabindex]):focus {
 a:not([href]):not([tabindex]):focus {
   outline: 0;
 }
-
-pre,
-code,
-kbd,
-samp {
-  font-family: monospace, monospace;
-  font-size: 1em;
-}
-
-pre {
-  margin-top: 0;
-  margin-bottom: 1rem;
-  overflow: auto;
-  -ms-overflow-style: scrollbar;
-}
-
-figure {
-  margin: 0 0 1rem;
+.col-md-4.pb-1.pb-md-0 .card .img-btn {
 }
 
 img {
@@ -8743,10 +8726,8 @@ button.bg-dark:focus {
   text-align: center !important;
 }
 
+
 @media (min-width: 576px) {
-  .text-sm-left {
-    text-align: left !important;
-  }
   .text-sm-right {
     text-align: right !important;
   }
