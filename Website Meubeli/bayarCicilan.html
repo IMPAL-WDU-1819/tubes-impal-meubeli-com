@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bayar</title>
+    <title>Bayar Cicilan</title>
     <!-- Bootstrap -->
     <link href="css/bootstrap-4.0.0.css" rel="stylesheet">
 	<link href="css/home.css" rel="stylesheet">
@@ -61,38 +61,56 @@
        </div>
        <div class="col-lg-6">
           <form>
-            <h3>Total Transaksi</h3>
-            <p style="font-size: 16pt; color: rgb(0, 160, 255)">Harga</p>
             <table>
-              <tr>
-                <td colspan="3">
-                  <p>
-                    Silahkan pilih metode pembayaran Anda:
-                  </p>
+              <tr style="font-size: 14pt">
+                <td>
+                    ID Transaksi
+                </td>
+                <td>
+                  : ID
+                </td>
+              </tr>
+              <tr style="font-size: 14pt">
+                <td>
+                    Total Transaksi
+                </td>
+                <td>
+                  : Total
+                </td>
+              </tr>
+              <tr style="font-size: 14pt">
+                <td>
+                    Total Terbayar
+                </td>
+                <td>
+                  : Cicilan
+                </td>
+              </tr>
+              <tr style="font-size: 14pt">
+                <td>
+                    Sisa Pembayaran
+                </td>
+                <td>
+                  : Total-Cicilan
                 </td>
               </tr>
               <tr>
-                <th style="padding: 4px; text-align: center; border-right: 2px solid gray; border-bottom: 2px solid gray">
-                  Batal
-                </th>
-                <th style="padding: 4px; text-align: center; border-right: 2px solid gray; border-bottom: 2px solid gray">
-                  Cash
-                </th>
-                <th style="padding: 4px; text-align: center; border-bottom: 2px solid gray">
-                  Cicil
-                </th>
+                <td><br></td>
               </tr>
               <tr>
-                <td style="padding: 4px; border-right: 2px solid gray">
-                  <input class="btn btn-danger" type="button" onclick="" value="Batalkan Transaksi">
+                <td style="padding: 5px; font-size: 14pt; border-bottom: 2px solid gray; border-right: 2px solid gray">
+                  Batal Bayar cicilan
                 </td>
-                <td style="padding: 4px; border-right: 2px solid gray">
-                  <input class="btn btn-success" type="submit" value="Bayar Cash">
+                <td style="padding: 5px; font-size: 14pt; border-bottom: 2px solid gray">
+                  Bayar Cicilan ke-n
                 </td>
-                <td style="padding: 4px">
-                  <input class="btn btn-primary" type="submit" value="Cicil 6x">
-                  <input class="btn btn-primary" type="submit" value="Cicil 10x">
-                  <input class="btn btn-primary" type="submit" value="Cicil 15x">
+              </tr>
+              <tr>
+                <td style="padding: 5px; border-right: 2px solid gray">
+                  <input style="width: 100%" class="btn btn-danger" type="button" onclick="" value="Kembali Ke Akun">
+                </td>
+                <td style="padding: 5px">
+                  <input style="width: 100%" class="btn btn-primary" type="submit" onclick="" value="Bayar Cicilan">
                 </td>
               </tr>
             </table>   
