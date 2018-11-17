@@ -1,3 +1,9 @@
+<?php 
+include('koneksi.php');
+include('proseslogin.php');
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -22,7 +28,7 @@
             <li class="nav-item"><a class="nav-link" href="Custom.html">Custom</a></li>
             <li class="nav-item"> <a class="nav-link" href="#">Stock</a></li>
             <li class="nav-item"> <a class="nav-link" href="About.html">About Us</a></li>
-            <li class="nav-item active"> <a class="nav-link" href="Login.html">Login <span class="sr-only">(current)</span></a></li>
+            <li class="nav-item active"> <a class="nav-link" href="Login.php">Login <span class="sr-only">(current)</span></a></li>
           </ul>
           <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -36,23 +42,19 @@
     <div class="card text-center col-md-4 offset-lg-4 col-lg-4">
       <div class="card-header"> Login</div>
       <div class="card-body">
-        <form>
+        <form action="proseslogin.php" method="post">
           <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-            <small id="emailHelp1" class="form-text text-muted">We'll never share your email with anyone else.</small></div>
+            <label for="exampleInputEmail1">Username</label>
+            <input type="text" class="form-control" name="uname" id="uname" placeholder="Enter username">
           <div class="form-group">
             <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            <input type="password" class="form-control" name="passwd" id="passwd" placeholder="Password">
           </div>
-<div class="form-check col-lg-12">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Remember me </label>
-          </div>
-</form>
+          <button type="submit" class="btn btn-primary" name="login">Login</button>
+        </form>
 </div>
-      <button type="submit" class="btn btn-primary">Login</button>
-<div class="form-group"><a href="Signup.html">Ceate new account</a> </div>
+      
+<div class="form-group"><a href="Signup.php">Ceate new account</a> </div>
 <div class="card-footer text-muted">
   Copyright © Meubeli. All rights reserved. </div>
 </div>

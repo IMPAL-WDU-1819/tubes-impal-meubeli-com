@@ -18,11 +18,11 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item"><a class="nav-link"html">Home </a></li>
+            <li class="nav-item"><a class="nav-link" href="index.php" >Home </a></li>
             <li class="nav-item"><a class="nav-link" href="Custom.html">Custom</a></li>
             <li class="nav-item"> <a class="nav-link" href="#">Stock</a></li>
             <li class="nav-item "> <a class="nav-link" href="About.html">About Us</a></li>
-            <li class="nav-item active"> <a class="nav-link" href="Login.html">Login <span class="sr-only">(current)</span></a></li>
+            <li class="nav-item active"> <a class="nav-link" href="Login.php">Login <span class="sr-only">(current)</span></a></li>
           </ul>
           <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -35,23 +35,23 @@
       <div class="card text-center col-md-4 offset-lg-4 col-lg-4">
         <div class="card-header"> Sign up</div>
         <div class="card-body">
-          <form>
-<div class="form-group">
-<input type="name" class="form-control" id="exampleInputPassword4" placeholder="Enter your name">
-</div>
-<div class="form-group">
-<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+          <form action="prosessignup.php" method="post">
+            <div class="form-group">
+            <input type="name" class="form-control" id="nama" name="nama" placeholder="Enter your name">
+            </div>
+            <div class="form-group">
+            <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
             <small id="emailHelp1" class="form-text text-muted">We'll never share your email with anyone else.</small></div>
             <div class="form-group">
-              
-              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            <input type="text" class="form-control" id="uname" name="uname" placeholder="Username">
             </div>
             <div class="form-group">
-<input type="password" class="form-control" id="exampleInputPassword7" placeholder="Confirm password">
+            <input type="password" class="form-control" id="passwd" name="passwd" placeholder="Password">
             </div>
-</form>
+            <button type="submit" name="signup" class="btn btn-primary">Sign up</button>
+          </form>
         </div>
-        <button type="submit" class="btn btn-primary">Sign up</button>
+
         <div class="card-footer text-muted"> Copyright © Meubeli. All rights reserved. </div>
       </div>
     </div>

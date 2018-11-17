@@ -1,3 +1,13 @@
+<?php 
+include('koneksi.php');
+include('proseslogin.php');
+
+
+
+echo login_nama();
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -10,6 +20,9 @@
 	<link href="css/home.css" rel="stylesheet">
   </head>
   <body>
+    <?php 
+        if ('<?php echo($loginStatus) ?>' == 'GAGAL') alert('Username atau password anda salah!');
+    ?>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
         <a class="navbar-brand" href="#"><img src="images/logo2-12.png" width="200" height="58" alt=""/></a>
@@ -25,7 +38,7 @@
             <li class="nav-item"> <a class="nav-link" href="#">Custom</a></li>
             <li class="nav-item"> <a class="nav-link" href="#">Stock</a></li>
             <li class="nav-item"> <a class="nav-link" href="#">About Us</a></li>
-            <li class="nav-item"> <a class="nav-link" href="Login.html">Login</a></li>
+            <li class="nav-item"> <a class="nav-link" href="Login.php">Login</a></li>
           </ul>
           <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
