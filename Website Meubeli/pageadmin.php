@@ -106,8 +106,8 @@ include('proseslogin.php');
           <td><?php echo $nama; ?></td>
           <td><?php echo $email; ?></td>
           <td><?php echo $hak; ?></td>
-          <td><button type="button" class="btn btn-danger">Hapus</button></td>
-          <td><button type="button" class="btn btn-warning">Edit</button></td>
+          <td><button type="button" class="btn btn-danger" name="del_user" onclick="confirm('Apa anda yakin, menghapus user <?php echo($nama);?> ?')"><a href="hapususer.php?username=<?php echo($uname);?>" style="text-decoration: none; color: white;">Hapus</a></button></td>
+          <td><button type="button" class="btn btn-warning"><a href="edituser.php?username=<?php echo($uname);?>&nama=<?php echo($nama);?>" style="text-decoration: none; color: white;">Edit</a></button></td>
         </tr>
       <?php } ?>  
     </tbody>

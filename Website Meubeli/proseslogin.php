@@ -54,6 +54,13 @@ function login_nama() {
 	return null;
 }
 
+
+function login_uname() {
+
+	if (login_check()) return $_SESSION['username'];
+	return null;
+}
+
 function logout() {
 
 	if (isset($_GET['logout']) && login_check()) {

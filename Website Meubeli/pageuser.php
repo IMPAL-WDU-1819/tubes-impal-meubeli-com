@@ -1,9 +1,8 @@
-<?php
-  include "koneksi.php";
-  include "proseslogin.php";
+<?php 
+	include 'koneksi.php';
+	include 'proseslogin.php';
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -38,10 +37,10 @@
     </nav>
     <div class="container" style="margin: 4%; margin-right: auto; margin-left: auto;">
       <div class="card text-center col-md-4 offset-lg-4 col-lg-4">
-        <div class="card-header"> EDIT USER <?php echo $_GET['nama']; ?></div>
+        <div class="card-header"> EDIT PROFILE </div>
         <div class="card-body">
           <?php
-            $un = $_GET['username'];
+            $un =  login_uname();
             $sql = mysqli_query($conn, "SELECT * FROM akun WHERE username = '$un'");
             $no = 0;
             $data = mysqli_fetch_array($sql);
@@ -72,7 +71,7 @@
             HAK
             <input type="text" class="form-control" id="hak" name="hak" value="<?php echo($hak) ?>">
             </div>
-            <button type="submit" name="edit_user" class="btn btn-primary">Edit</button>
+            <button type="submit" name="edit" class="btn btn-primary">Edit</button>
           </form>
         </div>
 

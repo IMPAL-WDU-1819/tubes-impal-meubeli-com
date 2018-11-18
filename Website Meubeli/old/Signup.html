@@ -1,9 +1,3 @@
-<?php
-  include "koneksi.php";
-  include "proseslogin.php";
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -24,10 +18,11 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item"><a class="nav-link" href="index.php" >Home </a></li>
+            <li class="nav-item"><a class="nav-link"html">Home </a></li>
             <li class="nav-item"><a class="nav-link" href="Custom.html">Custom</a></li>
             <li class="nav-item"> <a class="nav-link" href="#">Stock</a></li>
             <li class="nav-item "> <a class="nav-link" href="About.html">About Us</a></li>
+            <li class="nav-item active"> <a class="nav-link" href="Login.html">Login <span class="sr-only">(current)</span></a></li>
           </ul>
           <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -38,44 +33,25 @@
     </nav>
     <div class="container" style="margin: 4%; margin-right: auto; margin-left: auto;">
       <div class="card text-center col-md-4 offset-lg-4 col-lg-4">
-        <div class="card-header"> EDIT USER <?php echo $_GET['nama']; ?></div>
+        <div class="card-header"> Sign up</div>
         <div class="card-body">
-          <?php
-            $un = $_GET['username'];
-            $sql = mysqli_query($conn, "SELECT * FROM akun WHERE username = '$un'");
-            $no = 0;
-            $data = mysqli_fetch_array($sql);
-            $no++;
-            $passwd = $data['password'];
-            $nama = $data['nama'];
-            $email = $data['email'];
-            $hak = $data['hak'];
-          ?>
-          <form action="prosesedit.php?=username" method="POST">
+          <form>
+<div class="form-group">
+<input type="name" class="form-control" id="exampleInputPassword4" placeholder="Enter your name">
+</div>
+<div class="form-group">
+<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+            <small id="emailHelp1" class="form-text text-muted">We'll never share your email with anyone else.</small></div>
             <div class="form-group">
-            NAMA
-            <input type="name" class="form-control" id="nama" name="nama"  value="<?php echo($nama) ?>">
+              
+              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
             </div>
             <div class="form-group">
-            EMAIL
-            <input type="email" class="form-control" id="email" name="email" value="<?php echo($email) ?>">
+<input type="password" class="form-control" id="exampleInputPassword7" placeholder="Confirm password">
             </div>
-            <div class="form-group">
-            USERNAME
-            <input type="text" class="form-control" id="uname" name="uname" value="<?php echo($un) ?>" readonly>
-            </div>
-            <div class="form-group">
-            PASSWORD
-            <input type="password" class="form-control" id="passwd" name="passwd" value="<?php echo($passwd) ?>">
-            </div>
-            <div class="form-group">
-            HAK
-            <input type="text" class="form-control" id="hak" name="hak" value="<?php echo($hak) ?>">
-            </div>
-            <button type="submit" name="edit_user" class="btn btn-primary">Edit</button>
-          </form>
+</form>
         </div>
-
+        <button type="submit" class="btn btn-primary">Sign up</button>
         <div class="card-footer text-muted"> Copyright © Meubeli. All rights reserved. </div>
       </div>
     </div>
