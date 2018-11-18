@@ -18,6 +18,16 @@ echo login_nama();
     <!-- Bootstrap -->
     <link href="css/bootstrap-4.0.0.css" rel="stylesheet">
 	<link href="css/home.css" rel="stylesheet">
+  <style type="text/css">
+    .link-card{
+      color: white;
+      font-size: 40pt;
+    }
+    .link-card:hover{
+      color: white;
+      font-size: 40pt;
+    }
+  </style>
   </head>
   <body>
     <?php 
@@ -126,68 +136,76 @@ echo login_nama();
   <div class="container">
     <div class="row text-center">
       <div class="col-md-4 pb-1 pb-md-0">
+        <a class="link-card" href="category.php?cat=chair">
           <div class="card">
-			<div class="gallery">
-				<div class="gallery-image">  
-           			 <img src="images/thumb_chair.jpg" alt="Card image cap" width="200" height="199" class="card-img-top rounded img-fluid">
-					<div class="gallery-text col-lg-12">
-						<a href="index.html">Chair<a>
-					</div>  
-				</div>
-			</div>
-          
+          <div class="gallery">
+            <div class="gallery-image"> <img src="images/thumb_chair.jpg" alt="Card image cap" width="200" height="200" class="card-img-top rounded img-fluid">
+              <div class="gallery-text col-lg-12">Chair</div>
+            </div>
           </div>
+        </div>
+        </a>
       </div>
       <div class="col-md-4 pb-1 pb-md-0">
-        <div class="card">
+        <a class="link-card" href="category.php?cat=table">
+          <div class="card">
           <div class="gallery">
             <div class="gallery-image"> <img src="images/thum_table.jpg" alt="Card image cap" width="200" height="200" class="card-img-top rounded img-fluid">
-              <div class="gallery-text col-lg-12"> <a href="index.html">Table<a> </div>
+              <div class="gallery-text col-lg-12">Table</div>
             </div>
           </div>
         </div>
+        </a>
       </div>
-        <div class="col-md-4 pb-1 pb-md-0">
+      <div class="col-md-4 pb-1 pb-md-0">
+        <a class="link-card" href="category.php?cat=cupboard">
           <div class="card">
-            <div class="gallery">
-              <div class="gallery-image"> <img src="images/thumb_cupboard.jpg" alt="Card image cap" width="400" height="200" class="card-img-top rounded img-fluid">
-                <div class="gallery-text col-lg-12"> <a href="index.html">Cupboard<a> </div>
-              </div>
+          <div class="gallery">
+            <div class="gallery-image"> <img src="images/thumb_cupboard.jpg" alt="Card image cap" width="200" height="200" class="card-img-top rounded img-fluid">
+              <div class="gallery-text col-lg-12">Cupboard</div>
             </div>
           </div>
         </div>
-    </div>
-    <section>&nbsp;</section>
-    <div class="row text-center">
+        </a>
+      </div>
+      <section>&nbsp;</section>
+      <div class="row text-center">
       <div class="col-md-4 pb-1 pb-md-0">
-        <div class="card">
+        <a class="link-card" href="category.php?cat=shelf">
+          <div class="card">
           <div class="gallery">
             <div class="gallery-image"> <img src="images/thumb_shelf.jpg" alt="Card image cap" width="200" height="200" class="card-img-top rounded img-fluid">
-              <div class="gallery-text col-lg-12"> <a href="index.html">Shelf<a></div>
+              <div class="gallery-text col-lg-12">Shelf</div>
             </div>
           </div>
         </div>
-      </div>
-<div class="col-md-4 pb-1 pb-md-0">
-      <div class="card">
-          <div class="gallery">
-            <div class="gallery-image"> <img class="card-img-top rounded img-fluid" src="images/thumb_bed.jpg" alt="Card image cap">
-              <div class="gallery-text col-lg-12"> <a href="index.html">Bed<a></div>
-            </div>
-          </div>
-      </div>
+        </a>
       </div>
       <div class="col-md-4 pb-1 pb-md-0">
-        <div class="card">
+        <a class="link-card" href="category.php?cat=bed">
+          <div class="card">
           <div class="gallery">
-            <div class="gallery-image"> <img class="card-img-top rounded img-fluid" src="images/thumb_set.jpg" alt="Card image cap">
-              <div class="gallery-text col-lg-12"> <a href="index.html">Furniture Set<a></div>
+            <div class="gallery-image"> <img src="images/thumb_bed.jpg" alt="Card image cap" width="200" height="200" class="card-img-top rounded img-fluid">
+              <div class="gallery-text col-lg-12">Bed</div>
             </div>
           </div>
         </div>
+        </a>
+      </div>
+      <div class="col-md-4 pb-1 pb-md-0">
+        <a class="link-card" href="category.php?cat=set">
+          <div class="card">
+          <div class="gallery">
+            <div class="gallery-image"> <img src="images/thumb_set.jpg" alt="Card image cap" width="200" height="200" class="card-img-top rounded img-fluid">
+              <div class="gallery-text col-lg-12">Furniture Set</div>
+            </div>
+          </div>
+        </div>
+        </a>
       </div>
     </div>
-  </div>
+</div>
+</div>
 <hr>
     <div class="container text-white bg-dark p-4">
       <div class="row">
