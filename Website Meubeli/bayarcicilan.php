@@ -22,14 +22,12 @@ include('proseslogin.php');
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
-            
             <li class="nav-item active">
               <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item"> <a class="nav-link" href="custom.php">Custom</a></li>
             <li class="nav-item"> <a class="nav-link" href="#">Stock</a></li>
             <li class="nav-item"> <a class="nav-link" href="#">About Us</a></li>
-
           </ul>
           <ul class="navbar-nav ">
             <?php
@@ -76,48 +74,78 @@ include('proseslogin.php');
         </div>
       </div>
     </nav>
-    <h2 class="text-center">CICILAN-KU</h2>
-<br />
-<div class="container">
-  <form action="bayarcicilan.php" method="post">
-    <table class="table table-striped table-bordered">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">No</th>
-        <th scope="col">ID Transaksi</th>
-        <th scope="col">Nominal Transaksi</th>
-        <th scope="col">Total Terbayar</th>
-        <th scope="col">Sisa Pembayaran</th>
-        <th scope="col">Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <?php
-        $query = mysqli_query($conn, "SELECT * FROM cicilan RIGHT JOIN transaksi ON cicilan.id_transaksi = transaksi.id_transaksi RIGHT JOIN meubel ON transaksi.id_meubel = meubel.id_meubel WHERE transaksi.id_user = '".$_SESSION['username']."' AND transaksi.status_transaksi = 'belum'");
-        $no = 1;
-        while($data = mysqli_fetch_array($query)){
-      ?>
-        <tr>
-          <td><?php echo $no; ?></td>
-          <td><?php echo $data['id_transaksi']; ?></td>
-          <td><?php echo $data['harga_meubel']; ?></td>
-          <td><?php echo $data['cicilan']; ?></td>
-          <td>
-            <?php echo $data['harga_meubel']-$data['cicilan']; ?>
-          </td>
-          <input type="hidden" name="id_t" value="<?php echo $data['id_transaksi']; ?>">
-          <input type="hidden" name="h_m" value="<?php echo $data['harga_meubel']; ?>">
-          <input type="hidden" name="c" value="<?php echo $data['cicilan']; ?>">
-          <td><input type="submit" name="lun_c" class="btn btn-primary" value="Lunasi"></td>
-        </tr>
-      <?php 
-          $no++;
-        }
-      ?>  
-    </tbody>
-  </table>
-  </form>
-</div>
+    <div class="container mt-3">
+      <div class="row">
+			 <div class="col-lg-4">
+       </div>
+       <div class="col-lg-8">
+        <?php
+          if(isset($_POST['lun_c'])){
+            $id_t = $_POST['id_t'];
+            $h_m = $_POST['h_m'];
+            $c = $_POST['c'];
+          }
+        ?>
+          <form action="transaksi.php" method="post">
+            <table>
+              <tr style="font-size: 14pt">
+                <td>
+                    ID Transaksi
+                </td>
+                <td>
+                  : <?php echo $id_t ?>
+                </td>
+              </tr>
+              <tr style="font-size: 14pt">
+                <td>
+                    Nominal Transaksi
+                </td>
+                <td>
+                  : Rp. <?php echo $h_m ?>
+                </td>
+              </tr>
+              <tr style="font-size: 14pt">
+                <td>
+                    Total Terbayar
+                </td>
+                <td>
+                  : Rp. <?php echo $c ?>
+                </td>
+              </tr>
+              <tr style="font-size: 14pt">
+                <td>
+                    Sisa Pembayaran
+                </td>
+                <td>
+                  : Rp. <?php echo $h_m - $c ?>
+                </td>
+              </tr>
+              <tr>
+                <td><br></td>
+              </tr>
+              <tr>
+                <td style="padding: 5px; font-size: 14pt; border-bottom: 2px solid gray; border-right: 2px solid gray">
+                  Batal Bayar cicilan
+                </td>
+                <td style="padding: 5px; font-size: 14pt; border-bottom: 2px solid gray">
+                  Bayar Cicilan ini
+                </td>
+              </tr>
+              <tr>
+                <td style="padding: 5px; border-right: 2px solid gray">
+                  <input style="width: 100%" class="btn btn-danger" type="button" onclick="location.href='cicilanuser.php'" value="Kembali Ke Cicilan-ku">
+                </td>
+                <td style="padding: 5px">
+                  <input style="width: 100%" class="btn btn-primary" type="submit" onclick="" value="Bayar Cicilan">
+                </td>
+              </tr>
+            </table>   
+              </div>
+              </div>
+            </form>
+       </div>
+		</div>
+	</div>
 	<br>
 	<script>
 		var slideidx = 1;

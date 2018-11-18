@@ -119,4 +119,6 @@
                 window.location.href="index.php";
             </script>';
 	}
+
+	//lunasi cicilan (blom)
 ?>
