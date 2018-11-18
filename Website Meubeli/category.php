@@ -92,14 +92,18 @@ echo login_nama();
       <div class="col-md-4 pb-1 pb-md-0">
         <a class="link-card" href="Detail.php?id=<?php echo $data['id_meubel'] ?>">
       <?php while($dataPic = mysqli_fetch_array($queryPic)){ ?>
-          <div class="card img-fluid">
+          <div class="card img-fluid" alt="Card image cap">
           <img style="width: 349px; height: 349px" src="images/<?php echo $dataPic['gambar'] ?>" alt="Card image cap" class="card-img-top rounded img-fluid">
+			  
       <?php
         }
       ?>
-    <div class="card-img-overlay h-100 d-flex flex-column justify-content-end">
-      <p style="opacity: 0.8; color: rgb(41, 47, 53); background-color: rgb(248, 249, 250)" class="card-text"><?php echo $data["nama_meubel"] ?><br>Rp. <?php echo $data["harga_meubel"] ?></p>
-    </div>
+    
+		<div class="card-body">
+                  <h5 class="card-title"><p style="opacity: 0.8; color: rgb(41, 47, 53); background-color: rgb(248, 249, 250)" class="card-text"><?php echo $data["nama_meubel"] ?></p></h5>
+                  <a href="Detail.php?id=<?php echo $data['id_meubel'] ?>" class="btn btn-primary">Rp. <?php echo $data["harga_meubel"] ?></a>
+
+	</div>
   </div>
   </a>
   </div>

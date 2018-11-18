@@ -11,7 +11,7 @@ if (isset($_POST['login'])) {
 	$cek = mysqli_num_rows($view);
 
 	if ($cek >=1) {
-		if ($data = mysqli_fetch_array($view)) {
+		if ($data = mysqli_fetch_array($sql)) {
 
 			login_session();
 			$_SESSION['username'] = $uname;
@@ -22,8 +22,6 @@ if (isset($_POST['login'])) {
 		echo "<script>alert('Login Berhasil')</script>";
 		echo "<script>location.href='index.php'</script>";
 
-	}else{
-		echo "<script>alert('Login Gagal')</script>";
 	}
 }
 
@@ -56,3 +54,11 @@ function login_nama() {
 	return null;
 }
 
+function logout() {
+
+	if (isset($_GET['logout']) && login_check()) {
+		session_destroy();
+		return true;
+	}
+	return false;
+}

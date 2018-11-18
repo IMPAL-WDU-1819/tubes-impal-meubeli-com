@@ -3,6 +3,10 @@ include('koneksi.php');
 include('proseslogin.php');
 
 
+
+echo login_nama();
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -44,21 +48,7 @@ include('proseslogin.php');
             <li class="nav-item"> <a class="nav-link" href="#">Custom</a></li>
             <li class="nav-item"> <a class="nav-link" href="#">Stock</a></li>
             <li class="nav-item"> <a class="nav-link" href="#">About Us</a></li>
-          </ul>
-          <ul class="navbar-nav" style="padding-right: 10px; ">
-            <?php if (login_hak() == 'ADMIN' ) { ?>
-            <li class="nav-item" > <a class="nav-link" href="pageadmin.php">Page Admin</a></li>
-            <?php
-             } else if (login_hak() == 'REGULAR') { 
-            ?>
-            <li class="nav-item" > <a class="nav-link" href="profile.php">Profile</a></li>
-            <?php } ?>
-            <?php if (login_check() == 0) {?>
-            <li class="nav-item" > <a class="nav-link" href="Login.php">Login</a></li>
-            <?php } ?>
-            <?php if (login_check() == 1) {?>
-            <li class="nav-item" > <a class="nav-link" href="proseslogout.php">Logout</a></li>
-            <?php } ?>
+            <li class="nav-item"> <a class="nav-link" href="Login.php">Login</a></li>
           </ul>
           <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
