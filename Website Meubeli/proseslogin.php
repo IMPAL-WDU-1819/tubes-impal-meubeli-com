@@ -11,7 +11,7 @@ if (isset($_POST['login'])) {
 	$cek = mysqli_num_rows($view);
 
 	if ($cek >=1) {
-		if ($data = mysqli_fetch_array($sql)) {
+		while($data = mysqli_fetch_array($view)) {
 
 			login_session();
 			$_SESSION['username'] = $uname;
@@ -62,3 +62,4 @@ function logout() {
 	}
 	return false;
 }
+?>

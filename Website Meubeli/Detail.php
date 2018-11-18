@@ -1,7 +1,6 @@
 <?php 
 include('koneksi.php');
 include('proseslogin.php');
-echo login_nama();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,17 +24,47 @@ echo login_nama();
           <ul class="navbar-nav mr-auto">
             
             <li class="nav-item">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item"> <a class="nav-link" href="#">Custom</a></li>
+            <li class="nav-item"> <a class="nav-link" href="Custom.php">Custom</a></li>
             <li class="nav-item"> <a class="nav-link" href="#">Stock</a></li>
             <li class="nav-item"> <a class="nav-link" href="#">About Us</a></li>
-            <li class="nav-item"> <a class="nav-link" href="Login.html">Login</a></li>
           </ul>
-          <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form>
+          <ul class="navbar-nav ">
+            <?php
+              if(login_check()){
+                if(login_hak() == 'ADMIN'){
+            ?>
+            <li class="nav-item acive"><a class="nav-link" href="pageadmin.php"> Selamat Datang, <?php echo $_SESSION['nama'] ?></a>
+            </li>
+            <?php
+                }
+                else if(login_hak() == 'BASIC'){
+            ?>
+            <li class="nav-item active"><a class="nav-link" href="pageuser.php"> Selamat Datang, <?php echo $_SESSION['nama'] ?></a>
+            </li>
+            <?php
+                }
+                else if(login_hak() == 'SUPPLIER'){
+            ?>
+            <li class="nav-item active"><a class="nav-link" href="pageuser.php"> Selamat Datang, <?php echo $_SESSION['nama'] ?></a>
+            </li>
+            <li class="nav-item"> <a class="nav-link" href="proseslogout.php">Logout</a></li>
+            <?php
+                }
+            ?>
+            <li class="nav-item"> <a class="nav-link" href="proseslogout.php">Logout</a></li>
+            <?php
+              }
+              else{
+            ?>
+            <li class="nav-item active"> <a class="nav-link" href="login.php">Login</a></li>
+            <li class="nav-item"> <a class="nav-link" href="#">atau</a></li>
+            <li class="nav-item active"> <a class="nav-link" href="Signup.php">Sign up</a></li>
+            <?php
+              }
+            ?>
+          </ul>
         </div>
       </div>
     </nav>
@@ -99,24 +128,15 @@ echo login_nama();
           <?php echo $data['kategori_meubel'] ?><br>
           <?php echo $data['jenis_meubel'] ?>
 				  </p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<form action="bayar.php" method="post">
+				  <input type="hidden" name="id_meubel" value="<?php echo $id ?>">
+					<button type="submit" class="btn btn-default" name="bayar" id="buy"><img src="images/FRicon.png" width:30px>Beli!</button>
+					</form>
         <?php
           }
         ?>
-				<p>&nbsp;</p>
-				<p>&nbsp;</p>
-				<form action="" method="post">
-						<input type="hidden" name="addtocart" value="1" />
-						<input type="hidden" name="pid" value="" />
-						<input type="hidden" name="pnama" value="" />
-						<input type="hidden" name="pharga" value="" />
-						<div class="alert alert-success alert-dismissible" role="alert">
-							Barang sudah ditambahkan ke cart!
-							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
-						</div><br />
-						<button type="submit" class="btn btn-default" id="buy"><img src="images/FRicon.png" width:30px>Tambahkan ke keranjang</button>
-					</form>
 			</div>	
 		</div>
 	</div>

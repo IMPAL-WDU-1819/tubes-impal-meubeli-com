@@ -8,20 +8,10 @@ include('proseslogin.php');
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Chair</title>
+    <title>Bayar</title>
     <!-- Bootstrap -->
     <link href="css/bootstrap-4.0.0.css" rel="stylesheet">
 	<link href="css/home.css" rel="stylesheet">
-  <style type="text/css">
-    .link-card{
-      color: white;
-      font-size: 20pt;
-    }
-    .link-card:hover{
-      color: white;
-      font-size: 20pt;
-    }
-  </style>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -36,7 +26,7 @@ include('proseslogin.php');
             <li class="nav-item">
               <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item"> <a class="nav-link" href="Custom.php">Custom</a></li>
+            <li class="nav-item"> <a class="nav-link" href="custom.php">Custom</a></li>
             <li class="nav-item"> <a class="nav-link" href="#">Stock</a></li>
             <li class="nav-item"> <a class="nav-link" href="#">About Us</a></li>
           </ul>
@@ -45,19 +35,26 @@ include('proseslogin.php');
               if(login_check()){
                 if(login_hak() == 'ADMIN'){
             ?>
-            <li class="nav-item acive"><a class="nav-link" href="pageadmin.php"> Selamat Datang, <?php echo $_SESSION['nama'] ?></a>
+            <li class="nav-item active"><a class="nav-link" href="#"> Selamat Datang, <?php echo $_SESSION['nama'] ?></a>
+            <li class="nav-item"><a class="nav-link" href="pageadmin.php">Manage User</a>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="managetransaksi.php">Manage Transaksi</a>
             </li>
             <?php
                 }
                 else if(login_hak() == 'BASIC'){
             ?>
-            <li class="nav-item active"><a class="nav-link" href="pageuser.php"> Selamat Datang, <?php echo $_SESSION['nama'] ?></a>
+            <li class="nav-item active"><a class="nav-link" href="#"> Selamat Datang, <?php echo $_SESSION['nama'] ?></a>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="transaksiuser.php">Transaksi-ku</a>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="cicilanuser.php">Cicilan-ku</a>
             </li>
             <?php
                 }
                 else if(login_hak() == 'SUPPLIER'){
             ?>
-            <li class="nav-item active"><a class="nav-link" href="pageuser.php"> Selamat Datang, <?php echo $_SESSION['nama'] ?></a>
+            <li class="nav-item active"><a class="nav-link" href="pagesupplier.php"> Selamat Datang, <?php echo $_SESSION['nama'] ?></a>
             </li>
             <li class="nav-item"> <a class="nav-link" href="proseslogout.php">Logout</a></li>
             <?php
@@ -79,67 +76,111 @@ include('proseslogin.php');
       </div>
     </nav>
     <div class="container mt-3">
-      <div class="row">
-<!--     Judul-->
-    <hr>
     <?php
-      $cat = $_GET["cat"];
-      if($cat == "chair"){
-        $title = "CHAIRS";
-        $search = "kursi";
-      }
-      else if($cat == "table"){
-        $title = "TABLES";
-        $search = "meja";
-      }
-      else if($cat == "cupboard"){
-        $title = "CUPBOARDS";
-        $search = "lemari";
-      }
-      else if($cat == "shelf"){
-        $title = "SHELVES";
-        $search = "rak";
-      }
-      else if($cat == "bed"){
-        $title = "BEDS";
-        $search = "kasur";
-      }
-      else if($cat == "set"){
-        $title = "FURNITURE SETS";
-        $search = "set furniture";
-      }
+      if(login_check()){
     ?>
-    <h2 class="text-center"><?php echo $title ?></h2>
-    <hr>
-  <div class="container">
-    <div class="row text-center">
-      <?php
-        $query = mysqli_query($conn, "SELECT * FROM meubel WHERE kategori_meubel = '$search'");
-        while($data = mysqli_fetch_array($query)){
-          $queryPic = mysqli_query($conn, "SELECT * FROM gambar WHERE id_meubel = '".$data["id_meubel"]."' GROUP BY id_meubel");
-      ?>
-      <div class="col-md-4 pb-1 pb-md-0">
-        <a class="link-card" href="Detail.php?id=<?php echo $data['id_meubel'] ?>">
-      <?php while($dataPic = mysqli_fetch_array($queryPic)){ ?>
-          <div class="card img-fluid" alt="Card image cap">
-          <img style="width: 340px; height: 340px" src="images/<?php echo $dataPic['gambar'] ?>" alt="Card image cap" class="card-img-top rounded img-fluid">
-			  
-      <?php
+      <div class="row">
+			 <div class="col-lg-3">
+       </div>
+       <div class="col-lg-9">
+        <?php
+          if(isset($_POST['id_meubel'])){
+            $id = $_POST['id_meubel'];
+            $query = mysqli_query($conn, "SELECT * FROM meubel WHERE id_meubel = '$id'");
+            while($data = mysqli_fetch_array($query)){
+        ?>
+          <form action="transaksi.php" method="post">
+            <div style="font-size: 20pt">
+              <?php echo $data['nama_meubel'] ?>
+            </div>
+            <div style="font-size: 18pt; color: rgb(0, 160, 255)">
+              Rp. <?php echo $data['harga_meubel'] ?>
+            </div>
+            <div style="font-size: 14pt">
+              Deskripsi:<br>
+              <?php echo $data['kategori_meubel'] ?><br>
+              <?php echo $data['jenis_meubel'] ?>
+              <input type="hidden" name="id_m" value="<?php echo $id ?>">
+              <input type="hidden" name="id_u" value="<?php echo $_SESSION['username'] ?>">
+              <input type="hidden" name="h_m" value="<?php echo $data['harga_meubel'] ?>">
+            </div>
+            <table>
+              <tr>
+                <td colspan="3">
+                  <p>
+                    Silahkan pilih metode pembayaran Anda:
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <th style="padding: 4px; text-align: center; border-right: 2px solid gray; border-bottom: 2px solid gray">
+                  Batal
+                </th>
+                <th style="padding: 4px; text-align: center; border-right: 2px solid gray; border-bottom: 2px solid gray">
+                  Cash
+                </th>
+                <th style="padding: 4px; text-align: center; border-bottom: 2px solid gray">
+                  Cicil
+                </th>
+              </tr>
+              <tr>
+                <td style="padding: 4px; border-right: 2px solid gray">
+                  <button class="btn btn-danger" type="button" onclick="location.href='http://localhost/tubes-impal-meubeli-com/Website%20Meubeli/Detail.php?id=<?php echo $id ?>'">Batalkan Transaksi</button>
+                </td>
+                <td style="padding: 4px; border-right: 2px solid gray">
+                  <input class="btn btn-success" name="c0" type="submit" value="Bayar Cash">
+                </td>
+                <td style="padding: 4px">
+                  <input class="btn btn-primary" name="c6" type="submit" value="Cicil 6x">
+                  <input class="btn btn-primary" name="c10" type="submit" value="Cicil 10x">
+                  <input class="btn btn-primary" name="c15" type="submit" value="Cicil 15x">
+                </td>
+              </tr>
+            </table>   
+              </div>
+              </div>
+            </form>
+            <?php
+              }
+            }
+            ?>
+       </div>
+       <?php
         }
-      ?>
-    
-		<div class="card-body">
-                  <h4 style="color: rgb(41, 47, 53)" class="card-title"><?php echo $data["nama_meubel"] ?></h4>
-                  <a href="Detail.php?id=<?php echo $data['id_meubel'] ?>" class="btn btn-primary">Rp. <?php echo $data["harga_meubel"] ?></a>
-
+        else{
+          echo '<script type="text/javascript">
+                alert("Anda harus login sebelum bisa membeli meubel");
+                window.location.href="login.php";
+            </script>';
+        }
+       ?>
+		</div>
 	</div>
-  </div>
-  </a>
-  </div>
-      <?php
-        }
-      ?>
-  </div>
+	<br>
+	<script>
+		var slideidx = 1;
+		showDivs(slideidx);
+
+		function plusDivs(n){
+			showDivs(slideidx += n);
+		}
+
+		function showDivs(n){
+			var i;
+			var x = document.getElementsByClassName("show");
+			if (n > x.length){
+				slideidx = 1;
+			}
+			if (n < 1){
+				slideidx = x.length;
+			}
+			for (i = 0; i < x.length; i++){
+				x[i].style.display = "none";
+			}
+			x[slideidx-1].style.display= "block";
+		}
+	</script>
+        
 <hr>
     <div class="container text-white bg-dark p-4">
       <div class="row">

@@ -8,20 +8,10 @@ include('proseslogin.php');
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Chair</title>
+    <title>Bayar Cicilan</title>
     <!-- Bootstrap -->
     <link href="css/bootstrap-4.0.0.css" rel="stylesheet">
 	<link href="css/home.css" rel="stylesheet">
-  <style type="text/css">
-    .link-card{
-      color: white;
-      font-size: 20pt;
-    }
-    .link-card:hover{
-      color: white;
-      font-size: 20pt;
-    }
-  </style>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -33,31 +23,39 @@ include('proseslogin.php');
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             
-            <li class="nav-item">
-              <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item"> <a class="nav-link" href="Custom.php">Custom</a></li>
+            <li class="nav-item"> <a class="nav-link" href="custom.php">Custom</a></li>
             <li class="nav-item"> <a class="nav-link" href="#">Stock</a></li>
             <li class="nav-item"> <a class="nav-link" href="#">About Us</a></li>
+
           </ul>
           <ul class="navbar-nav ">
             <?php
               if(login_check()){
                 if(login_hak() == 'ADMIN'){
             ?>
-            <li class="nav-item acive"><a class="nav-link" href="pageadmin.php"> Selamat Datang, <?php echo $_SESSION['nama'] ?></a>
+            <li class="nav-item active"><a class="nav-link" href="#"> Selamat Datang, <?php echo $_SESSION['nama'] ?></a>
+            <li class="nav-item"><a class="nav-link" href="pageadmin.php">Manage User</a>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="managetransaksi.php">Manage Transaksi</a>
             </li>
             <?php
                 }
                 else if(login_hak() == 'BASIC'){
             ?>
-            <li class="nav-item active"><a class="nav-link" href="pageuser.php"> Selamat Datang, <?php echo $_SESSION['nama'] ?></a>
+            <li class="nav-item active"><a class="nav-link" href="#"> Selamat Datang, <?php echo $_SESSION['nama'] ?></a>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="transaksiuser.php">Transaksi-ku</a>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="cicilanuser.php">Cicilan-ku</a>
             </li>
             <?php
                 }
                 else if(login_hak() == 'SUPPLIER'){
             ?>
-            <li class="nav-item active"><a class="nav-link" href="pageuser.php"> Selamat Datang, <?php echo $_SESSION['nama'] ?></a>
+            <li class="nav-item active"><a class="nav-link" href="pagesupplier.php"> Selamat Datang, <?php echo $_SESSION['nama'] ?></a>
             </li>
             <li class="nav-item"> <a class="nav-link" href="proseslogout.php">Logout</a></li>
             <?php
@@ -78,68 +76,72 @@ include('proseslogin.php');
         </div>
       </div>
     </nav>
-    <div class="container mt-3">
-      <div class="row">
-<!--     Judul-->
-    <hr>
-    <?php
-      $cat = $_GET["cat"];
-      if($cat == "chair"){
-        $title = "CHAIRS";
-        $search = "kursi";
-      }
-      else if($cat == "table"){
-        $title = "TABLES";
-        $search = "meja";
-      }
-      else if($cat == "cupboard"){
-        $title = "CUPBOARDS";
-        $search = "lemari";
-      }
-      else if($cat == "shelf"){
-        $title = "SHELVES";
-        $search = "rak";
-      }
-      else if($cat == "bed"){
-        $title = "BEDS";
-        $search = "kasur";
-      }
-      else if($cat == "set"){
-        $title = "FURNITURE SETS";
-        $search = "set furniture";
-      }
-    ?>
-    <h2 class="text-center"><?php echo $title ?></h2>
-    <hr>
-  <div class="container">
-    <div class="row text-center">
+    <h2 class="text-center">CICILAN-KU</h2>
+<br />
+<div class="container">
+  <form action="transaksi.php" method="post">
+    <table class="table table-striped table-bordered">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">No</th>
+        <th scope="col">ID Transaksi</th>
+        <th scope="col">Nominal Transaksi</th>
+        <th scope="col">Total Terbayar</th>
+        <th scope="col">Sisa Pembayaran</th>
+        <th scope="col">Cicilan Ke</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
       <?php
-        $query = mysqli_query($conn, "SELECT * FROM meubel WHERE kategori_meubel = '$search'");
-        while($data = mysqli_fetch_array($query)){
-          $queryPic = mysqli_query($conn, "SELECT * FROM gambar WHERE id_meubel = '".$data["id_meubel"]."' GROUP BY id_meubel");
+      //sini belom
+        $query = mysqli_query($conn, "SELECT * FROM cicilan RIGHT JOIN transaksi ON cicilan.id_transaksi = transaksi.id_transaksi RIGHT JOIN meubel ON transaksi.id_meubel = mubel.id_meubel WHERE transaksi.status = ");
       ?>
-      <div class="col-md-4 pb-1 pb-md-0">
-        <a class="link-card" href="Detail.php?id=<?php echo $data['id_meubel'] ?>">
-      <?php while($dataPic = mysqli_fetch_array($queryPic)){ ?>
-          <div class="card img-fluid" alt="Card image cap">
-          <img style="width: 340px; height: 340px" src="images/<?php echo $dataPic['gambar'] ?>" alt="Card image cap" class="card-img-top rounded img-fluid">
-			  
-      <?php
+        <tr>
+          <td><?php echo $no; ?></td>
+          <td><?php echo $data['id_transaksi']; ?></td>
+          <td><?php echo $data1['harga_meubel']; ?></td>
+          <td><?php echo $data2['cicilan']; ?></td>
+          <td>
+            <?php echo $data1['harga_meubel']-$data2['cicilan']; ?>
+          </td>
+          <input type="hidden" name="id_m" value="<?php echo $id_t; ?>">
+          <td><input type="submit" name="del_t" onclick="return confirm('Lunasi Cicilan ini?')" class="btn btn-primary" value="Batal"></td>
+        </tr>
+      <?php 
         }
-      ?>
-    
-		<div class="card-body">
-                  <h4 style="color: rgb(41, 47, 53)" class="card-title"><?php echo $data["nama_meubel"] ?></h4>
-                  <a href="Detail.php?id=<?php echo $data['id_meubel'] ?>" class="btn btn-primary">Rp. <?php echo $data["harga_meubel"] ?></a>
+      }
+    }
+      ?>  
+    </tbody>
+  </table>
+  </form>
+</div>
+	<br>
+	<script>
+		var slideidx = 1;
+		showDivs(slideidx);
 
-	</div>
-  </div>
-  </a>
-  </div>
-      <?php
-        }
-      ?>
-  </div>
+		function plusDivs(n){
+			showDivs(slideidx += n);
+		}
+
+		function showDivs(n){
+			var i;
+			var x = document.getElementsByClassName("show");
+			if (n > x.length){
+				slideidx = 1;
+			}
+			if (n < 1){
+				slideidx = x.length;
+			}
+			for (i = 0; i < x.length; i++){
+				x[i].style.display = "none";
+			}
+			x[slideidx-1].style.display= "block";
+		}
+	</script>
+        
 <hr>
     <div class="container text-white bg-dark p-4">
       <div class="row">

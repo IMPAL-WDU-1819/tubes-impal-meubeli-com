@@ -8,22 +8,15 @@ include('proseslogin.php');
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Chair</title>
+    <title>Transaksi-ku</title>
     <!-- Bootstrap -->
     <link href="css/bootstrap-4.0.0.css" rel="stylesheet">
 	<link href="css/home.css" rel="stylesheet">
-  <style type="text/css">
-    .link-card{
-      color: white;
-      font-size: 20pt;
-    }
-    .link-card:hover{
-      color: white;
-      font-size: 20pt;
-    }
-  </style>
   </head>
   <body>
+<?php 
+        if ('<?php echo($loginStatus) ?>' == 'GAGAL') alert('Username atau password anda salah!');
+    ?>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
         <a class="navbar-brand" href="#"><img src="images/logo2-12.png" width="200" height="58" alt=""/></a>
@@ -33,7 +26,7 @@ include('proseslogin.php');
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             
-            <li class="nav-item">
+            <li class="nav-item active">
               <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item"> <a class="nav-link" href="Custom.php">Custom</a></li>
@@ -78,68 +71,61 @@ include('proseslogin.php');
         </div>
       </div>
     </nav>
-    <div class="container mt-3">
-      <div class="row">
-<!--     Judul-->
-    <hr>
-    <?php
-      $cat = $_GET["cat"];
-      if($cat == "chair"){
-        $title = "CHAIRS";
-        $search = "kursi";
-      }
-      else if($cat == "table"){
-        $title = "TABLES";
-        $search = "meja";
-      }
-      else if($cat == "cupboard"){
-        $title = "CUPBOARDS";
-        $search = "lemari";
-      }
-      else if($cat == "shelf"){
-        $title = "SHELVES";
-        $search = "rak";
-      }
-      else if($cat == "bed"){
-        $title = "BEDS";
-        $search = "kasur";
-      }
-      else if($cat == "set"){
-        $title = "FURNITURE SETS";
-        $search = "set furniture";
-      }
-    ?>
-    <h2 class="text-center"><?php echo $title ?></h2>
-    <hr>
-  <div class="container">
-    <div class="row text-center">
+<hr>
+<h2 class="text-center">TRANSAKSI-KU</h2>
+<br />
+<div class="container">
+  <form action="transaksi.php" method="post">
+    <table class="table table-striped table-bordered">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">No</th>
+        <th scope="col">ID Transaksi</th>
+        <th scope="col">Tanggal</th>
+        <th scope="col">Jumlah Cicilan</th>
+        <th scope="col">Jenis Pembayaran</th>
+        <th scope="col">Status Transaksi</th>
+        <th scope="col">ID User</th>
+        <th scope="col">ID Meubel</th>
+        <th scope="col">ID Sparepart</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
       <?php
-        $query = mysqli_query($conn, "SELECT * FROM meubel WHERE kategori_meubel = '$search'");
-        while($data = mysqli_fetch_array($query)){
-          $queryPic = mysqli_query($conn, "SELECT * FROM gambar WHERE id_meubel = '".$data["id_meubel"]."' GROUP BY id_meubel");
+        $sql = mysqli_query($conn, "SELECT * FROM transaksi WHERE id_user = '".$_SESSION['username']."'");
+        $no = 0;
+        while ($data = mysqli_fetch_array($sql)) {
+        $no++;
+        $id_t =  $data['id_transaksi'];
+        $tgl = $data['tgl_transaksi'];
+        $n_cil = $data['jml_cicilan'];
+        $j_pem = $data['jenis_pembayaran'];
+        $stat_t = $data['status_transaksi'];
+        $id_u = $data['id_user'];
+        $id_m = $data['id_meubel'];
+        $id_s = $data['id_sparepart'];
       ?>
-      <div class="col-md-4 pb-1 pb-md-0">
-        <a class="link-card" href="Detail.php?id=<?php echo $data['id_meubel'] ?>">
-      <?php while($dataPic = mysqli_fetch_array($queryPic)){ ?>
-          <div class="card img-fluid" alt="Card image cap">
-          <img style="width: 340px; height: 340px" src="images/<?php echo $dataPic['gambar'] ?>" alt="Card image cap" class="card-img-top rounded img-fluid">
-			  
-      <?php
-        }
-      ?>
-    
-		<div class="card-body">
-                  <h4 style="color: rgb(41, 47, 53)" class="card-title"><?php echo $data["nama_meubel"] ?></h4>
-                  <a href="Detail.php?id=<?php echo $data['id_meubel'] ?>" class="btn btn-primary">Rp. <?php echo $data["harga_meubel"] ?></a>
-
-	</div>
-  </div>
-  </a>
-  </div>
-      <?php
-        }
-      ?>
-  </div>
+        <tr>
+          <td><?php echo $no; ?></td>
+          <td><?php echo $id_t; ?></td>
+          <td><?php echo $tgl; ?></td>
+          <td><?php echo $n_cil; ?></td>
+          <td><?php echo $j_pem ?></td>
+          <td><?php echo $stat_t; ?></td>
+          <td><?php echo $id_u; ?></td>
+          <td><?php echo $id_m; ?></td>
+          <td><?php echo $id_s; ?></td>
+          <input type="hidden" name="hal_t" value="<?php echo $_SESSION['hak'] ?>">
+          <input type="hidden" name="id_m" value="<?php echo $id_t; ?>">
+          <td><input type="submit" name="del_t" onclick="return confirm('Yakin ingin membatalkan Transaksi?')" class="btn btn-danger" value="Batal"></td>
+        </tr>
+      <?php } ?>  
+    </tbody>
+  </table>
+  </form>
+</div>
+<hr>
 <hr>
     <div class="container text-white bg-dark p-4">
       <div class="row">
