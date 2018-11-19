@@ -24,7 +24,6 @@ include('proseslogin.php');
           <ul class="navbar-nav mr-auto">
             <li class="nav-item"><a class="nav-link" href="index.php" >Home </a></li>
             <li class="nav-item"><a class="nav-link" href="Custom.php">Custom</a></li>
-            <li class="nav-item"> <a class="nav-link" href="#">Stock</a></li>
             <li class="nav-item "> <a class="nav-link" href="About.html">About Us</a></li>
           </ul>
           <ul class="navbar-nav ">

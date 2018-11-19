@@ -25,7 +25,6 @@
           <ul class="navbar-nav mr-auto">
             <li class="nav-item"><a class="nav-link" href="index.php" >Home </a></li>
             <li class="nav-item"><a class="nav-link" href="Custom.html">Custom</a></li>
-            <li class="nav-item"> <a class="nav-link" href="#">Stock</a></li>
             <li class="nav-item "> <a class="nav-link" href="About.html">About Us</a></li>
           </ul>
           <form class="form-inline my-2 my-lg-0">
@@ -69,7 +68,7 @@
             </div>
             <div class="form-group">
             HAK
-            <input type="text" class="form-control" id="hak" name="hak" value="<?php echo($hak) ?>">
+            <input type="text" class="form-control" id="hak" name="hak" value="<?php echo($hak) ?>" readonly>
             </div>
             <button type="submit" name="edit" class="btn btn-primary">Edit</button>
           </form>

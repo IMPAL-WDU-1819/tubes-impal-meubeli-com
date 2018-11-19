@@ -8,7 +8,7 @@ include('proseslogin.php');
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Page admin</title>
+    <title>Page Supplier</title>
     <!-- Bootstrap -->
     <link href="css/bootstrap-4.0.0.css" rel="stylesheet">
 	<link href="css/home.css" rel="stylesheet">
@@ -30,7 +30,6 @@ include('proseslogin.php');
               <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item"> <a class="nav-link" href="Custom.php">Custom</a></li>
-            <li class="nav-item"> <a class="nav-link" href="#">Stock</a></li>
             <li class="nav-item"> <a class="nav-link" href="#">About Us</a></li>
           </ul>
           <ul class="navbar-nav ">
@@ -52,7 +51,7 @@ include('proseslogin.php');
             ?>
             <li class="nav-item active"><a class="nav-link" href="pageuser.php"> Selamat Datang, <?php echo $_SESSION['nama'] ?></a>
             </li>
-            <li class="nav-item"> <a class="nav-link" href="proseslogout.php">Logout</a></li>
+            <li class="nav-item"> <a class="nav-link" href="pagesupplier.php">Stock Request</a></li>
             <?php
                 }
             ?>
@@ -72,42 +71,35 @@ include('proseslogin.php');
       </div>
     </nav>
 <hr>
-<h2 class="text-center">USER MANAGEMENT</h2>
+<h2 class="text-center">STOCK MANAGEMENT</h2>
 <br />
 <div class="container">
   <table class="table table-striped table-bordered">
     <thead class="thead-dark">
       <tr>
         <th scope="col">No</th>
-        <th scope="col">Username</th>
-        <th scope="col">Password</th>
-        <th scope="col">Nama</th>
-        <th scope="col">Email</th>
-        <th scope="col">Hak</th>
-        <th scope="col" colspan="2">Action</th>
+        <th scope="col">ID Stock</th>
+        <th scope="col">Request Stock</th>
+        <th scope="col">Tanggal</th>
+        <th scope="col">Action</th>
       </tr>
     </thead>
     <tbody>
       <?php
-        $sql = mysqli_query($conn, "SELECT * FROM akun");
+        $sql = mysqli_query($conn, "SELECT * FROM stock");
         $no = 0;
         while ($data = mysqli_fetch_array($sql)) {
         $no++;
-        $uname =  $data['username'];
-        $passwd = $data['password'];
-        $nama = $data['nama'];
-        $email = $data['email'];
-        $hak = $data['hak'];
+        $ids =  $data['id_stock'];
+        $req = $data['request'];
+        $tgl = $data['tanggal'];
       ?>
         <tr>
           <td><?php echo $no; ?></td>
-          <td><?php echo $uname; ?></td>
-          <td><?php echo $passwd; ?></td>
-          <td><?php echo $nama; ?></td>
-          <td><?php echo $email; ?></td>
-          <td><?php echo $hak; ?></td>
-          <td><button type="button" class="btn btn-danger" name="del_user" onclick="confirm('Apa anda yakin, menghapus user <?php echo($nama);?> ?')"><a href="hapususer.php?username=<?php echo($uname);?>" style="text-decoration: none; color: white;">Hapus</a></button></td>
-          <td><button type="button" class="btn btn-warning"><a href="edituser.php?username=<?php echo($uname);?>&nama=<?php echo($nama);?>" style="text-decoration: none; color: white;">Edit</a></button></td>
+          <td><?php echo $ids; ?></td>
+          <td><?php echo $req; ?></td>
+          <td><?php echo $tgl; ?></td>
+          <td><button type="button" class="btn btn-warning"><a href="#" style="text-decoration: none; color: white;">Selesai</a></button></td>
         </tr>
       <?php } ?>  
     </tbody>

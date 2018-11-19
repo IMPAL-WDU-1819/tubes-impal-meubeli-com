@@ -1,18 +1,18 @@
-<?php
-  include "koneksi.php";
-  include "proseslogin.php";
+<?php 
+	include 'koneksi.php';
+	include 'proseslogin.php';
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Edit Profile</title>
+    <title>Stock</title>
     <!-- Bootstrap -->
     <link href="css/bootstrap-4.0.0.css" rel="stylesheet">
+    <link href="css/bootstrap-datepicker3.css" rel="stylesheet">
   </head>
   <body>
     <!-- Start of Navbar -->
@@ -38,41 +38,18 @@
     </nav>
     <div class="container" style="margin: 4%; margin-right: auto; margin-left: auto;">
       <div class="card text-center col-md-4 offset-lg-4 col-lg-4">
-        <div class="card-header"> EDIT USER <?php echo $_GET['nama']; ?></div>
+        <div class="card-header"> REQUEST STOCK SPAREPART MEUBEL </div>
         <div class="card-body">
-          <?php
-            $un = $_GET['username'];
-            $sql = mysqli_query($conn, "SELECT * FROM akun WHERE username = '$un'");
-            $no = 0;
-            $data = mysqli_fetch_array($sql);
-            $no++;
-            $passwd = $data['password'];
-            $nama = $data['nama'];
-            $email = $data['email'];
-            $hak = $data['hak'];
-          ?>
-          <form action="prosesedit.php?=username" method="POST">
+          <form action="prosesstock.php" method="POST" id="stock_form">
             <div class="form-group">
-            NAMA
-            <input type="name" class="form-control" id="nama" name="nama"  value="<?php echo($nama) ?>">
+              TANGGAL REQUEST
+              <input class="form-control" id="date" name="date" placeholder="YYYY-MM-DD" type="text"/>
             </div>
             <div class="form-group">
-            EMAIL
-            <input type="email" class="form-control" id="email" name="email" value="<?php echo($email) ?>">
+            FORM REQUEST <br />
+            <textarea form="stock_form" style="width: 100%; height: 225px;" name="req"></textarea>
             </div>
-            <div class="form-group">
-            USERNAME
-            <input type="text" class="form-control" id="uname" name="uname" value="<?php echo($un) ?>" readonly>
-            </div>
-            <div class="form-group">
-            PASSWORD
-            <input type="password" class="form-control" id="passwd" name="passwd" value="<?php echo($passwd) ?>">
-            </div>
-            <div class="form-group">
-            HAK
-            <input type="text" class="form-control" id="hak" name="hak" value="<?php echo($hak) ?>">
-            </div>
-            <button type="submit" name="edit_user" class="btn btn-primary">Edit</button>
+            <button type="submit" name="stock" class="btn btn-primary">Submit</button>
           </form>
         </div>
 
@@ -82,5 +59,19 @@
     <script src="js/jquery-3.2.1.min.js"></script> <!-- Include all compiled plugins (below), or include individual files as needed --> 
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap-4.0.0.js"></script>
+    <script type="text/javascript" src="js/bootstrap-datepicker.min.js"></script>
+    <script>
+    $(document).ready(function(){
+      var date_input=$('input[name="date"]'); //our date input has the name "date"
+      var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+      var options={
+        format: 'yyyy-mm-dd',
+        container: container,
+        todayHighlight: true,
+        autoclose: true,
+      };
+      date_input.datepicker(options);
+    })
+</script>
   </body>
 </html>
