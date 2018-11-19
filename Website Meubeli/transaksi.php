@@ -120,5 +120,36 @@
             </script>';
 	}
 
-	//lunasi cicilan (blom)
+	//lunasi cicilan
+	if(isset($_POST['bc'])){
+		$id_t = $_POST['id_t'];
+		$h_m = $_POST['h_m'];
+		$c = $_POST['c'];
+
+		$queryT = mysqli_query($conn, "SELECT * FROM transaksi WHERE id_transaksi = '$id_t'");
+		while($dataT = mysqli_fetch_array($queryT)){
+			$tgl = $dataT['tgl_transaksi'];
+			$j_c = $dataT['jml_cicilan'];
+			$s_t = $dataT['status_transaksi'];
+			$id_u = $dataT['id_user'];
+			$id_m = $dataT['id_meubel'];
+			$id_s = $dataT['id_sparepart']; 
+		}
+		$lc = $h_m/$j_c;
+		if($lc%1000 != 0){
+			$up = $lc%1000;
+			$up = 1000 - $up;
+			$lc = $lc + $up;
+		}
+		$c = $c + $lc;
+		$updateC = mysqli_query($conn, "UPDATE cicilan SET id_transaksi ='$id_t', cicilan=$c WHERE id_transaksi = '$id_t'");
+		if($c >= $h_m){
+			$s_t = 'lunas';
+		}
+		$updateT = mysqli_query($conn, "UPDATE transaksi SET id_transaksi='$id_t', tgl_transaksi=CURRENT_DATE, jml_cicilan=$j_c, jenis_pembayaran='cicilan', status_transaksi='$s_t', id_user='$id_u', id_meubel='$id_m', id_sparepart='$id_s' WHERE id_transaksi = '$id_t'");
+		echo '<script type="text/javascript">
+                alert("Berhasil Membayar Cicilan");
+                window.location.href="index.php";
+            </script>';
+	}
 ?>

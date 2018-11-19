@@ -94,6 +94,7 @@ include('proseslogin.php');
                 </td>
                 <td>
                   : <?php echo $id_t ?>
+                  <input type="hidden" name="id_t" value="<?php echo $id_t ?>">
                 </td>
               </tr>
               <tr style="font-size: 14pt">
@@ -102,6 +103,7 @@ include('proseslogin.php');
                 </td>
                 <td>
                   : Rp. <?php echo $h_m ?>
+                  <input type="hidden" name="h_m" value="<?php echo $h_m ?>">
                 </td>
               </tr>
               <tr style="font-size: 14pt">
@@ -110,6 +112,7 @@ include('proseslogin.php');
                 </td>
                 <td>
                   : Rp. <?php echo $c ?>
+                  <input type="hidden" name="c" value="<?php echo $c ?>">
                 </td>
               </tr>
               <tr style="font-size: 14pt">
@@ -136,7 +139,7 @@ include('proseslogin.php');
                   <input style="width: 100%" class="btn btn-danger" type="button" onclick="location.href='cicilanuser.php'" value="Kembali Ke Cicilan-ku">
                 </td>
                 <td style="padding: 5px">
-                  <input style="width: 100%" class="btn btn-primary" type="submit" onclick="" value="Bayar Cicilan">
+                  <input style="width: 100%" class="btn btn-primary" type="submit" name="bc" value="Bayar Cicilan">
                 </td>
               </tr>
             </table>   
