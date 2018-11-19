@@ -5,7 +5,13 @@
 	if(isset($_POST['del_t'])){
 		$id_t = $_POST['id_m'];
 		$hal_t = $_POST['hal_t'];
+		$query1 = mysqli_query($conn, "SELECT * FROM transaksi WHERE id_transaksi = '$id_t'");
+		while ($data1 = mysqli_fetch_array($query1)) {
+			$id_mc = $data1['id_meubel'];
+		}
 		$delete = mysqli_query($conn, "DELETE FROM transaksi WHERE id_transaksi = '$id_t'");
+		$delete1 = mysqli_query($conn, "DELETE FROM custom WHERE id_custom = '$id_mc'");
+		$delete2 = mysqli_query($conn, "DELETE FROM cicilan WHERE id_transaksi = '$id_t'");
 		if($hal_t == 'BASIC'){
 			echo '<script type="text/javascript">
                 alert("Berhasil Hapus/Batalkan Transaksi");
@@ -152,4 +158,37 @@
                 window.location.href="index.php";
             </script>';
 	}
+
+	//bayar custom cash
+	if(isset($_POST['cc0'])){
+		$id_mc = $_POST['id_mc'];
+		$id_uc = $_POST['id_uc'];
+		$h_mc = $_POST['h_mc'];
+		//start_auto id
+		$query = mysqli_query($conn, "SELECT MAX(id_transaksi) AS last FROM transaksi");	
+		$data = mysqli_fetch_array($query);
+		$last = $data["last"];
+		$inr = (int)substr($last, 1);
+		$inr++;
+		$id = "t".sprintf("%011s", $inr);
+		//
+		$query1 = mysqli_query($conn, "SELECT MAX(id_custom) AS last FROM custom");
+		$data1 = mysqli_fetch_array($query1);
+		$last1 = $data1['last'];
+		$inr1 = (int)substr($last1, 1);
+		$inr1++;
+		$id_mc = $id_mc.sprintf("%09s", $inr1);
+		//
+		$insert1 = mysqli_query($conn, "INSERT INTO custom (id_custom, harga) VALUES ('$id_mc', $h_mc)");
+		$insert = mysqli_query($conn, "INSERT INTO transaksi (id_transaksi, tgl_transaksi, jml_cicilan, jenis_pembayaran, status_transaksi, id_user, id_meubel, id_sparepart) VALUES ('$id', CURRENT_DATE, 0, 'cash', 'lunas', '$id_uc', '$id_mc', '-')");
+		//end_auto id
+		echo '<script type="text/javascript">
+                alert("Berhasil Melakukan Transaksi");
+                window.location.href="index.php";
+            </script>';
+	}
+
+	//pesan sparepart
+
+
 ?>

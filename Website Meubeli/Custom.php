@@ -72,16 +72,19 @@ include('proseslogin.php');
 			 <div class="card text-center col-lg-7 offset-md-3 col-lg-7">
       <div class="card-header bg-dark" style="color: white"> <h3> CUSTOM </h3></div>
       <div class="card-body">
-        <form>
+        <form action="bayarcustom.php" method="post">
 			<table>
 				<tr>
 					<td>Jenis Meubel</td>
 					<td style="width: 30%"> : </td>
 					<td>
-						<select style="width: 100%">
-							<option value="kursi"> Kursi</option>
-							<option value="meja">Meja</option>
-							<option value="almari">Almari</option>
+						<select name="j_m" style="width: 100%">
+							<option value="120000"> Kursi</option>
+							<option value="150000">Meja</option>
+							<option value="450000">Almari</option>
+              <option value="100000"> Rak</option>
+              <option value="400000">Kasur</option>
+              <option value="1000000">Set Furnitur</option>
 						</select>
 					</td>
 				</tr>
@@ -89,11 +92,11 @@ include('proseslogin.php');
 					<td>Bahan</td>
 					<td style="width: 30%"> : </td>
 					<td>
-						<select style="width: 100%">
-							<option value="kayu1"> Kayu Solid</option>
-							<option value="kayu2">Kayu Ramin</option>
-							<option value="kayu3">Kayu Cedar</option>
-							<option value="kayu4">Kayu Pinus</option>
+						<select name="bhn" style="width: 100%">
+							<option value="0"> Kayu Solid</option>
+							<option value="13000">Kayu Ramin</option>
+							<option value="15000">Kayu Cedar</option>
+							<option value="10000">Kayu Pinus</option>
 						</select>
 					</td>
 				</tr>
@@ -101,10 +104,10 @@ include('proseslogin.php');
 					<td>Ukuran</td>
 					<td style="width: 30%"> : </td>
 					<td>
-						<select style="width: 100%">
-							<option value="dewasa"> Dewasa</option>
-							<option value="anak">Kayu Anak-anak</option>
-							<option value="bayi">Bayi</option>
+						<select name="ukr" style="width: 100%">
+							<option value="20000"> Dewasa</option>
+							<option value="10000"> Anak-anak</option>
+							<option value="0">Bayi</option>
 						</select>
 					</td>
 				</tr>
@@ -112,37 +115,30 @@ include('proseslogin.php');
 					<td>Warna</td>
 					<td style="width: 30%"> : </td>
 					<td>
-						<select style="width: 100%">
-							<option value="red1"> Red Mahogany</option>
-							<option value="red2"> Red Oak</option>
-							<option value="brown1"> Walnut Brown</option>
-							<option value="brown2"> Rotan Brown</option>
+						<select name="clr" style="width: 100%">
+							<option value="55000"> Red Mahogany</option>
+							<option value="50000"> Red Oak</option>
+							<option value="45000"> Walnut Brown</option>
+							<option value="40000"> Rotan Brown</option>
 						</select>
 					</td>
 				</tr>
 				<tr>
-					<td>Jumlah</td>
-					<td style="width: 30%"> : </td>
-					<td>
-						<select style="width: 100%">
-							<option value="1"> 1 </option>
-							<option value="1"> 2 </option>
-							<option value="1"> 3 </option>
-							<option value="1"> 4 </option>
-							<option value="1"> 5 </option>
-							<option value="1"> 6 </option>
-						</select>
-					</td>
 				</tr>
 				<tr>
 					<td>Deskripsi Tambahan</td>
 					<td style="width: 30%"> : </td>
-					<td><textarea></textarea></td>
+					<td><textarea name="dt"></textarea></td>
 				</tr>
+        <tr>
+          <td></td>
+          <td colspan="2">
+            <button style="width: 100%" type="submit" name="pc" class="btn btn-primary bg-dark">Pesan Custom</button>
+          </td>
+        </tr>
 			</table>
 		</form>
 </div>
-      <button type="submit" class="btn btn-primary bg-dark">Add to Cart</button>
 <div class="card-footer text-muted">
   Copyright © Meubeli. All rights reserved. </div>
 </div>
