@@ -9,7 +9,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Sign Up</title>
+    <title>Edit Profil</title>
     <!-- Bootstrap -->
     <link href="css/bootstrap-4.0.0.css" rel="stylesheet">
   </head>
@@ -23,14 +23,58 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item"><a class="nav-link" href="index.php" >Home </a></li>
-            <li class="nav-item"><a class="nav-link" href="Custom.html">Custom</a></li>
-            <li class="nav-item "> <a class="nav-link" href="About.html">About Us</a></li>
+            <li class="nav-item">
+              <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item"> <a class="nav-link" href="custom.php">Custom</a></li>
+            <?php
+            if(login_hak() == 'ADMIN'){
+            ?>
+              <li class="nav-item"> <a class="nav-link" href="pagestock.php">Stock</a></li>
+            <?php } ?>
+            <li class="nav-item"> <a class="nav-link" href="About.php">About Us</a></li>
           </ul>
-          <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form>
+          <ul class="navbar-nav ">
+            <?php
+              if(login_check()){
+                if(login_hak() == 'ADMIN'){
+            ?>
+            <li class="nav-item active"><a class="nav-link" href="#"> Selamat Datang, <?php echo $_SESSION['nama'] ?></a>
+            <li class="nav-item"><a class="nav-link" href="pageadmin.php">Manage User</a>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="managetransaksi.php">Manage Transaksi</a>
+            </li>
+            <?php
+                }
+                else if(login_hak() == 'BASIC'){
+            ?>
+            <li class="nav-item active"><a class="nav-link" href="#"> Selamat Datang, <?php echo $_SESSION['nama'] ?></a>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="transaksiuser.php">Transaksi-ku</a>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="cicilanuser.php">Cicilan-ku</a>
+            </li>
+            <?php
+                }
+                else if(login_hak() == 'SUPPLIER'){
+            ?>
+            <li class="nav-item active"><a class="nav-link" href="#"> Selamat Datang, <?php echo $_SESSION['nama'] ?></a>
+            </li>
+            <li class="nav-item"> <a class="nav-link" href="pagesupplier.php">Stock Request</a></li>
+            <?php
+                }
+            ?>
+            <li class="nav-item"> <a class="nav-link" href="proseslogout.php">Logout</a></li>
+            <?php
+              }
+              else{
+            ?>
+            <li class="nav-item active"> <a class="nav-link" href="login.php">Login</a></li>
+            <li class="nav-item"> <a class="nav-link" href="#">atau</a></li>
+            <li class="nav-item active"> <a class="nav-link" href="Signup.php">Sign up</a></li>
+            <?php
+              }
+            ?>
         </div>
       </div>
     </nav>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 20, 2018 at 08:29 AM
+-- Generation Time: Nov 20, 2018 at 12:45 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -42,6 +42,7 @@ CREATE TABLE `akun` (
 
 INSERT INTO `akun` (`username`, `password`, `nama`, `email`, `hak`) VALUES
 ('admin', 'admin', 'ADMIN', 'admin@meubeli.com', 'ADMIN'),
+('AkangSuplai', 'kangsuplai', 'kang suplayer', 'kangsuplayer@gmail.com', 'SUPPLIER'),
 ('crypt', 'cordeon', 'Ja-VR', 'fasyahj@yahoo.com', 'BASIC');
 
 -- --------------------------------------------------------

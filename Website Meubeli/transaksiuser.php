@@ -26,19 +26,26 @@ include('proseslogin.php');
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             
-            <li class="nav-item active">
+            <li class="nav-item">
               <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item"> <a class="nav-link" href="Custom.php">Custom</a></li>
-            <li class="nav-item"> <a class="nav-link" href="#">Stock</a></li>
-            <li class="nav-item"> <a class="nav-link" href="#">About Us</a></li>
+            <li class="nav-item"> <a class="nav-link" href="custom.php">Custom</a></li>
+            <?php
+            if(login_hak() == 'ADMIN'){
+            ?>
+              <li class="nav-item"> <a class="nav-link" href="pagestock.php">Stock</a></li>
+            <?php } ?>
+            <li class="nav-item"> <a class="nav-link" href="About.php">About Us</a></li>
           </ul>
           <ul class="navbar-nav ">
             <?php
               if(login_check()){
                 if(login_hak() == 'ADMIN'){
             ?>
-            <li class="nav-item acive"><a class="nav-link" href="pageadmin.php"> Selamat Datang, <?php echo $_SESSION['nama'] ?></a>
+            <li class="nav-item active"><a class="nav-link" href="#"> Selamat Datang, <?php echo $_SESSION['nama'] ?></a>
+            <li class="nav-item"><a class="nav-link" href="pageadmin.php">Manage User</a>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="managetransaksi.php">Manage Transaksi</a>
             </li>
             <?php
                 }
@@ -46,13 +53,17 @@ include('proseslogin.php');
             ?>
             <li class="nav-item active"><a class="nav-link" href="pageuser.php"> Selamat Datang, <?php echo $_SESSION['nama'] ?></a>
             </li>
+            <li class="nav-item active"><a class="nav-link" href="#">Transaksi-ku</a>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="cicilanuser.php">Cicilan-ku</a>
+            </li>
             <?php
                 }
                 else if(login_hak() == 'SUPPLIER'){
             ?>
-            <li class="nav-item active"><a class="nav-link" href="pageuser.php"> Selamat Datang, <?php echo $_SESSION['nama'] ?></a>
+            <li class="nav-item active"><a class="nav-link" href="#"> Selamat Datang, <?php echo $_SESSION['nama'] ?></a>
             </li>
-            <li class="nav-item"> <a class="nav-link" href="proseslogout.php">Logout</a></li>
+            <li class="nav-item"> <a class="nav-link" href="pagesupplier.php">Stock Request</a></li>
             <?php
                 }
             ?>
@@ -75,6 +86,9 @@ include('proseslogin.php');
 <h2 class="text-center">TRANSAKSI-KU</h2>
 <br />
 <div class="container">
+  <?php
+      if(login_check()){
+    ?>
   <form action="transaksi.php" method="post">
     <table class="table table-striped table-bordered">
     <thead class="thead-dark">
@@ -124,6 +138,15 @@ include('proseslogin.php');
     </tbody>
   </table>
   </form>
+  <?php
+       }
+        else{
+          echo '<script type="text/javascript">
+                alert("Anda harus login sebelum bisa melihat transaksi");
+                window.location.href="index.php";
+            </script>';
+        }
+       ?>
 </div>
 <hr>
 <hr>

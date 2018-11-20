@@ -23,6 +23,10 @@ if (isset($_POST['login'])) {
 		echo "<script>location.href='index.php'</script>";
 
 	}
+	else{
+		echo "<script>alert('Username atau Password Salah')</script>";
+		echo "<script>location.href='login.php'</script>";
+	}
 }
 
 function login_session() {

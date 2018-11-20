@@ -22,13 +22,16 @@ include('proseslogin.php');
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
-            
             <li class="nav-item">
               <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item"> <a class="nav-link" href="custom.php">Custom</a></li>
-            <li class="nav-item"> <a class="nav-link" href="#">Stock</a></li>
-            <li class="nav-item"> <a class="nav-link" href="#">About Us</a></li>
+            <?php
+            if(login_hak() == 'ADMIN'){
+            ?>
+              <li class="nav-item"> <a class="nav-link" href="pagestock.php">Stock</a></li>
+            <?php } ?>
+            <li class="nav-item"> <a class="nav-link" href="About.php">About Us</a></li>
           </ul>
           <ul class="navbar-nav ">
             <?php
@@ -44,7 +47,7 @@ include('proseslogin.php');
                 }
                 else if(login_hak() == 'BASIC'){
             ?>
-            <li class="nav-item active"><a class="nav-link" href="#"> Selamat Datang, <?php echo $_SESSION['nama'] ?></a>
+            <li class="nav-item active"><a class="nav-link" href="pageuser.php"> Selamat Datang, <?php echo $_SESSION['nama'] ?></a>
             </li>
             <li class="nav-item"><a class="nav-link" href="transaksiuser.php">Transaksi-ku</a>
             </li>
@@ -54,9 +57,9 @@ include('proseslogin.php');
                 }
                 else if(login_hak() == 'SUPPLIER'){
             ?>
-            <li class="nav-item active"><a class="nav-link" href="pagesupplier.php"> Selamat Datang, <?php echo $_SESSION['nama'] ?></a>
+            <li class="nav-item active"><a class="nav-link" href="#"> Selamat Datang, <?php echo $_SESSION['nama'] ?></a>
             </li>
-            <li class="nav-item"> <a class="nav-link" href="proseslogout.php">Logout</a></li>
+            <li class="nav-item"> <a class="nav-link" href="pagesupplier.php">Stock Request</a></li>
             <?php
                 }
             ?>
@@ -150,7 +153,7 @@ include('proseslogin.php');
         else{
           echo '<script type="text/javascript">
                 alert("Anda harus login sebelum bisa membeli meubel");
-                window.location.href="login.php";
+                window.location.href="index.php";
             </script>';
         }
        ?>

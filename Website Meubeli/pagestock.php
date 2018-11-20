@@ -24,19 +24,65 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item"><a class="nav-link" href="index.php" >Home </a></li>
-            <li class="nav-item"><a class="nav-link" href="Custom.html">Custom</a></li>
-            <li class="nav-item"> <a class="nav-link" href="#">Stock</a></li>
-            <li class="nav-item "> <a class="nav-link" href="About.html">About Us</a></li>
+            <li class="nav-item">
+              <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item"> <a class="nav-link" href="custom.php">Custom</a></li>
+            <?php
+            if(login_hak() == 'ADMIN'){
+            ?>
+              <li class="nav-item active"> <a class="nav-link" href="#">Stock</a></li>
+            <?php } ?>
+            <li class="nav-item"> <a class="nav-link" href="About.php">About Us</a></li>
           </ul>
-          <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form>
+          <ul class="navbar-nav ">
+            <?php
+              if(login_check()){
+                if(login_hak() == 'ADMIN'){
+            ?>
+            <li class="nav-item active"><a class="nav-link" href="#"> Selamat Datang, <?php echo $_SESSION['nama'] ?></a>
+            <li class="nav-item"><a class="nav-link" href="pageadmin.php">Manage User</a>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="managetransaksi.php">Manage Transaksi</a>
+            </li>
+            <?php
+                }
+                else if(login_hak() == 'BASIC'){
+            ?>
+            <li class="nav-item active"><a class="nav-link" href="pageuser.php"> Selamat Datang, <?php echo $_SESSION['nama'] ?></a>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="transaksiuser.php">Transaksi-ku</a>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="cicilanuser.php">Cicilan-ku</a>
+            </li>
+            <?php
+                }
+                else if(login_hak() == 'SUPPLIER'){
+            ?>
+            <li class="nav-item active"><a class="nav-link" href="#"> Selamat Datang, <?php echo $_SESSION['nama'] ?></a>
+            </li>
+            <li class="nav-item"> <a class="nav-link" href="pagesupplier.php">Stock Request</a></li>
+            <?php
+                }
+            ?>
+            <li class="nav-item"> <a class="nav-link" href="proseslogout.php">Logout</a></li>
+            <?php
+              }
+              else{
+            ?>
+            <li class="nav-item active"> <a class="nav-link" href="login.php">Login</a></li>
+            <li class="nav-item"> <a class="nav-link" href="#">atau</a></li>
+            <li class="nav-item active"> <a class="nav-link" href="Signup.php">Sign up</a></li>
+            <?php
+              }
+            ?>
         </div>
       </div>
     </nav>
     <div class="container" style="margin: 4%; margin-right: auto; margin-left: auto;">
+      <?php
+      if(login_check() && login_hak() == 'ADMIN'){
+    ?>
       <div class="card text-center col-md-4 offset-lg-4 col-lg-4">
         <div class="card-header"> REQUEST STOCK SPAREPART MEUBEL </div>
         <div class="card-body">
@@ -55,6 +101,15 @@
 
         <div class="card-footer text-muted"> Copyright © Meubeli. All rights reserved. </div>
       </div>
+      <?php
+        }
+        else{
+          echo '<script type="text/javascript">
+                alert("Hanya Admin yang bisa mengkases halaman ini");
+                window.location.href="index.php";
+            </script>';
+        }
+       ?>
     </div>
     <script src="js/jquery-3.2.1.min.js"></script> <!-- Include all compiled plugins (below), or include individual files as needed --> 
     <script src="js/popper.min.js"></script>

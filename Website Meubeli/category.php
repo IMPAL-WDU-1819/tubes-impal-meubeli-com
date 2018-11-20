@@ -8,7 +8,7 @@ include('proseslogin.php');
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Chair</title>
+    <title>Kategori</title>
     <!-- Bootstrap -->
     <link href="css/bootstrap-4.0.0.css" rel="stylesheet">
 	<link href="css/home.css" rel="stylesheet">
@@ -32,20 +32,26 @@ include('proseslogin.php');
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
-            
             <li class="nav-item">
               <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item"> <a class="nav-link" href="Custom.php">Custom</a></li>
-            <li class="nav-item"> <a class="nav-link" href="#">Stock</a></li>
-            <li class="nav-item"> <a class="nav-link" href="#">About Us</a></li>
+            <li class="nav-item"> <a class="nav-link" href="custom.php">Custom</a></li>
+            <?php
+            if(login_hak() == 'ADMIN'){
+            ?>
+              <li class="nav-item"> <a class="nav-link" href="pagestock.php">Stock</a></li>
+            <?php } ?>
+            <li class="nav-item"> <a class="nav-link" href="About.php">About Us</a></li>
           </ul>
           <ul class="navbar-nav ">
             <?php
               if(login_check()){
                 if(login_hak() == 'ADMIN'){
             ?>
-            <li class="nav-item acive"><a class="nav-link" href="pageadmin.php"> Selamat Datang, <?php echo $_SESSION['nama'] ?></a>
+            <li class="nav-item active"><a class="nav-link" href="#"> Selamat Datang, <?php echo $_SESSION['nama'] ?></a>
+            <li class="nav-item"><a class="nav-link" href="pageadmin.php">Manage User</a>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="managetransaksi.php">Manage Transaksi</a>
             </li>
             <?php
                 }
@@ -53,13 +59,17 @@ include('proseslogin.php');
             ?>
             <li class="nav-item active"><a class="nav-link" href="pageuser.php"> Selamat Datang, <?php echo $_SESSION['nama'] ?></a>
             </li>
+            <li class="nav-item"><a class="nav-link" href="transaksiuser.php">Transaksi-ku</a>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="cicilanuser.php">Cicilan-ku</a>
+            </li>
             <?php
                 }
                 else if(login_hak() == 'SUPPLIER'){
             ?>
-            <li class="nav-item active"><a class="nav-link" href="pageuser.php"> Selamat Datang, <?php echo $_SESSION['nama'] ?></a>
+            <li class="nav-item active"><a class="nav-link" href="#"> Selamat Datang, <?php echo $_SESSION['nama'] ?></a>
             </li>
-            <li class="nav-item"> <a class="nav-link" href="proseslogout.php">Logout</a></li>
+            <li class="nav-item"> <a class="nav-link" href="pagesupplier.php">Stock Request</a></li>
             <?php
                 }
             ?>

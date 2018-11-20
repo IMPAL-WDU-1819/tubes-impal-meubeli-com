@@ -8,16 +8,13 @@ include('proseslogin.php');
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Manage User</title>
+    <title>About Us</title>
     <!-- Bootstrap -->
     <link href="css/bootstrap-4.0.0.css" rel="stylesheet">
-	<link href="css/home.css" rel="stylesheet">
   </head>
   <body>
-<?php 
-        if ('<?php echo($loginStatus) ?>' == 'GAGAL') alert('Username atau password anda salah!');
-    ?>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <!-- Start of Navbar -->
+   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
         <a class="navbar-brand" href="#"><img src="images/logo2-12.png" width="200" height="58" alt=""/></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,6 +22,7 @@ include('proseslogin.php');
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
+            
             <li class="nav-item">
               <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
             </li>
@@ -34,7 +32,7 @@ include('proseslogin.php');
             ?>
               <li class="nav-item"> <a class="nav-link" href="pagestock.php">Stock</a></li>
             <?php } ?>
-            <li class="nav-item"> <a class="nav-link" href="About.php">About Us</a></li>
+            <li class="nav-item active"> <a class="nav-link" href="#">About Us</a></li>
           </ul>
           <ul class="navbar-nav ">
             <?php
@@ -42,7 +40,7 @@ include('proseslogin.php');
                 if(login_hak() == 'ADMIN'){
             ?>
             <li class="nav-item active"><a class="nav-link" href="#"> Selamat Datang, <?php echo $_SESSION['nama'] ?></a>
-            <li class="nav-item active"><a class="nav-link" href="#">Manage User</a>
+            <li class="nav-item"><a class="nav-link" href="pageadmin.php">Manage User</a>
             </li>
             <li class="nav-item"><a class="nav-link" href="managetransaksi.php">Manage Transaksi</a>
             </li>
@@ -77,66 +75,35 @@ include('proseslogin.php');
             <?php
               }
             ?>
-          </ul>
         </div>
       </div>
     </nav>
-<hr>
-<h2 class="text-center">USER MANAGEMENT</h2>
-<br />
-<div class="container">
-  <?php
-      if(login_check() && login_hak() == 'ADMIN'){
-    ?>
-  <table class="table table-striped table-bordered">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">No</th>
-        <th scope="col">Username</th>
-        <th scope="col">Password</th>
-        <th scope="col">Nama</th>
-        <th scope="col">Email</th>
-        <th scope="col">Hak</th>
-        <th scope="col" colspan="2">Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <?php
-        $sql = mysqli_query($conn, "SELECT * FROM akun");
-        $no = 0;
-        while ($data = mysqli_fetch_array($sql)) {
-        $no++;
-        $uname =  $data['username'];
-        $passwd = $data['password'];
-        $nama = $data['nama'];
-        $email = $data['email'];
-        $hak = $data['hak'];
-      ?>
-        <tr>
-          <td><?php echo $no; ?></td>
-          <td><?php echo $uname; ?></td>
-          <td><?php echo $passwd; ?></td>
-          <td><?php echo $nama; ?></td>
-          <td><?php echo $email; ?></td>
-          <td><?php echo $hak; ?></td>
-          <td><button type="button" class="btn btn-danger" name="del_user" onclick="confirm('Apa anda yakin, menghapus user <?php echo($nama);?> ?')"><a href="hapususer.php?username=<?php echo($uname);?>" style="text-decoration: none; color: white;">Hapus</a></button></td>
-          <td><button type="button" class="btn btn-warning"><a href="edituser.php?username=<?php echo($uname);?>&nama=<?php echo($nama);?>" style="text-decoration: none; color: white;">Edit</a></button></td>
-        </tr>
-      <?php } ?>  
-    </tbody>
-  </table>
-  <?php
-        }
-        else{
-          echo '<script type="text/javascript">
-                alert("Hanya Admin yang bisa mengkases halaman ini");
-                window.location.href="index.php";
-            </script>';
-        }
-       ?>
-</div>
-<hr>
-<hr>
+    <!--End of Navbar -->
+    <!-- Start of our motto -->
+    <div class="container" style="margin-top: 3px;">
+      <h3 style="text-align: center; font-family: Georgia, serif; color: #003366;"> We Provide Furniture. </h3>
+      <h3 style="text-align: center; font-family: Georgia, serif;  color: #003366;"> For your home. For your family.</h3>
+      <p style="text-align: center; font-family: Georgia, serif; color: #003366;">A good house has high quality of furniture. By buying our furnitures. Make a comfortable place to gather. </p>
+    </div>
+    <!-- End of our motto -->
+    <!-- Start of Pict -->
+    <div class="container mt-3">
+      <div class="row">
+        <div class="col-12">
+          <img class="d-block w-100" src="images/living-heading-1920x500.jpg">
+        </div>
+    </div>
+    <!-- End of Pict -->
+    <hr>
+    <div class="container">
+      <div class="row"> 
+        <div class="col-sm-8">
+          <h4> About Us </h4>
+            <p style="text-align: justify;"> Meubeli comes as a service provider of furniture to increase family comfort. Present in different packaging not only provides furniture that is always available but also provides custom features for our prospective customers later. By carrying the slogan "We provide furniture. For your home. For your family". We strive to be the best in service and provide the highest quality furniture for the satisfaction of our customers. </p>
+        </div>
+      </div>
+    </div>
+    <hr>
     <div class="container text-white bg-dark p-4">
       <div class="row">
         <div class="col-6 col-md-8 col-lg-7">

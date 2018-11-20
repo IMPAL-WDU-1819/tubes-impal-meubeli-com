@@ -45,7 +45,7 @@ include('proseslogin.php');
             ?>
               <li class="nav-item"> <a class="nav-link" href="pagestock.php">Stock</a></li>
             <?php } ?>
-            <li class="nav-item"> <a class="nav-link" href="#">About Us</a></li>
+            <li class="nav-item"> <a class="nav-link" href="About.php">About Us</a></li>
           </ul>
           <ul class="navbar-nav ">
             <?php
