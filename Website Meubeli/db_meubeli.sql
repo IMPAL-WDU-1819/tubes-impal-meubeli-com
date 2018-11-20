@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 18, 2018 at 07:17 AM
+-- Generation Time: Nov 20, 2018 at 08:29 AM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -54,6 +54,31 @@ CREATE TABLE `cicilan` (
   `id_transaksi` char(12) NOT NULL,
   `cicilan` int(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cicilan`
+--
+
+INSERT INTO `cicilan` (`id_transaksi`, `cicilan`) VALUES
+('t00000000002', 84000);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `custom`
+--
+
+CREATE TABLE `custom` (
+  `id_custom` char(10) NOT NULL,
+  `harga` int(8) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `custom`
+--
+
+INSERT INTO `custom` (`id_custom`, `harga`) VALUES
+('c000000001', 1090000);
 
 -- --------------------------------------------------------
 
@@ -110,6 +135,27 @@ CREATE TABLE `sparepart` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `stock`
+--
+
+CREATE TABLE `stock` (
+  `id_stock` char(5) NOT NULL,
+  `request` longtext NOT NULL,
+  `tanggal` date NOT NULL,
+  `status` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `stock`
+--
+
+INSERT INTO `stock` (`id_stock`, `request`, `tanggal`, `status`) VALUES
+('ST003', 'a', '2018-11-19', 'diterima'),
+('ST004', 'request es teh manis', '2018-11-20', 'diterima');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `transaksi`
 --
 
@@ -129,7 +175,9 @@ CREATE TABLE `transaksi` (
 --
 
 INSERT INTO `transaksi` (`id_transaksi`, `tgl_transaksi`, `jml_cicilan`, `jenis_pembayaran`, `status_transaksi`, `id_user`, `id_meubel`, `id_sparepart`) VALUES
-('t00000000001', '2018-11-17', 0, 'cash', 'lunas', 'crypt', 'm000000001', '-');
+('t00000000001', '2018-11-17', 0, 'cash', 'lunas', 'crypt', 'm000000001', '-'),
+('t00000000002', '2018-11-18', 6, 'cicilan', 'belum', 'crypt', 'm000000001', '-'),
+('t00000000003', '2018-11-19', 0, 'cash', 'lunas', 'crypt', 'c000000001', '-');
 
 --
 -- Indexes for dumped tables
@@ -152,6 +200,12 @@ ALTER TABLE `meubel`
 --
 ALTER TABLE `sparepart`
   ADD PRIMARY KEY (`id_sparepart`);
+
+--
+-- Indexes for table `stock`
+--
+ALTER TABLE `stock`
+  ADD PRIMARY KEY (`id_stock`);
 
 --
 -- Indexes for table `transaksi`

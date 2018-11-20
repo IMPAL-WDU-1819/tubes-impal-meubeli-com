@@ -81,6 +81,7 @@ include('proseslogin.php');
         <th scope="col">ID Stock</th>
         <th scope="col">Request Stock</th>
         <th scope="col">Tanggal</th>
+        <th scope="col">Status</th>
         <th scope="col">Action</th>
       </tr>
     </thead>
@@ -93,13 +94,15 @@ include('proseslogin.php');
         $ids =  $data['id_stock'];
         $req = $data['request'];
         $tgl = $data['tanggal'];
+        $stat = $data['status'];
       ?>
         <tr>
           <td><?php echo $no; ?></td>
           <td><?php echo $ids; ?></td>
           <td><?php echo $req; ?></td>
           <td><?php echo $tgl; ?></td>
-          <td><button type="button" class="btn btn-warning"><a href="#" style="text-decoration: none; color: white;">Selesai</a></button></td>
+          <td><?php echo $stat; ?></td>
+          <td><button type="button" class="btn btn-warning"><a href="prosesstock.php?done=<?php echo $ids; ?>" style="text-decoration: none; color: white;">Selesai</a></button></td>
         </tr>
       <?php } ?>  
     </tbody>
