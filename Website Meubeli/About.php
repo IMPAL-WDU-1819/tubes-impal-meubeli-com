@@ -151,6 +151,45 @@ Quitman, WA, 99110-0219<br>
         </div>
       </div>
     </div>
+    <div class="container text-white bg-dark p-4">
+      <div class="row">
+        <div class="col-6 col-md-8 col-lg-7">
+          <div class="row text-center">
+            <div class="col-sm-6 col-md-4 col-lg-4 col-12">
+              <ul class="list-unstyled">
+                <li>
+                  <h5>Categories</h5>
+                </li>
+                <li class="btn-link"> <a href="category.php?cat=chair" style="color: dimgrey">Chair</a></li>
+                <li class="btn-link"> <a href="category.php?cat=table" style="color: dimgrey">Table</a></li>
+                <li class="btn-link"> <a href="category.php?cat=cupboard" style="color: dimgrey">Cupboard</a></li>
+                <li class="btn-link"> <a href="category.php?cat=shelf" style="color: dimgrey">Shelf</a></li>
+                <li class="btn-link"> <a href="category.php?cat=bed" style="color: dimgrey">Bed</a></li>
+                <li class="btn-link"> <a href="category.php?cat=set" style="color: dimgrey">Furniture</a></li>
+              </ul>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-4 col-12">
+              <ul class="list-unstyled">
+                <li>
+                  <h5>Payment</h5>
+                </li>
+                <li class="btn-link"> <a style="color: grey">Cash</a></li>
+                <li class="btn-link"> <a style="color: grey">Installments</a></li>
+              </ul>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-4 col-12"><img src="images/PCI.png" style="width: 160px">
+              <ul class="list-unstyled">
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 col-lg-5 col-6"><img src="images/logo2-12.png" style="width: 260px">
+          <address>
+            <strong><a href="index.php">www.Meubeli.com</a></strong><br>
+          </address>
+        </div>
+      </div>
+    </div>
     <footer class="text-center">
       <div class="container">
         <div class="row">
