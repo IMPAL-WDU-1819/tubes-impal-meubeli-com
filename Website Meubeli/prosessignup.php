@@ -7,7 +7,7 @@ if (isset($_POST['signup'])) {
 	$email = $_POST['email'];
 	$nama = $_POST['nama'];
 
-	$sql = mysqli_query($conn,"INSERT INTO akun(username, password, nama, email, hak) VALUES ('$uname', '$passwd', '$nama', '$email', 'REGULAR' )");
+	$sql = mysqli_query($conn,"INSERT INTO akun(username, password, nama, email, hak) VALUES ('$uname', '$passwd', '$nama', '$email', 'BASIC' )");
 
 	if ($sql) {
 		echo "<script>alert('Signup Berhasil')</script>";

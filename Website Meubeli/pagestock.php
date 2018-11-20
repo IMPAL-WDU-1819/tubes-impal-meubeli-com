@@ -40,14 +40,14 @@
       <div class="card text-center col-md-4 offset-lg-4 col-lg-4">
         <div class="card-header"> REQUEST STOCK SPAREPART MEUBEL </div>
         <div class="card-body">
-          <form action="prosesstock.php" method="POST" id="stock_form">
+          <form action="prosesstock.php" method="POST">
             <div class="form-group">
               TANGGAL REQUEST
               <input class="form-control" id="date" name="date" placeholder="YYYY-MM-DD" type="text"/>
             </div>
             <div class="form-group">
             FORM REQUEST <br />
-            <textarea form="stock_form" style="width: 100%; height: 225px;" name="req"></textarea>
+            <textarea style="width: 100%; height: 225px;" name="req"></textarea>
             </div>
             <button type="submit" name="stock" class="btn btn-primary">Submit</button>
           </form>
