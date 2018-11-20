@@ -94,15 +94,24 @@ include('proseslogin.php');
         $ids =  $data['id_stock'];
         $req = $data['request'];
         $tgl = $data['tanggal'];
+<<<<<<< HEAD
         $status = $data['status'];
+=======
+        $stat = $data['status'];
+>>>>>>> 75668a0a6626fce582cd04a211a4ac106be1a5e3
       ?>
         <tr>
           <td><?php echo $no; ?></td>
           <td><?php echo $ids; ?></td>
           <td><?php echo $req; ?></td>
           <td><?php echo $tgl; ?></td>
+<<<<<<< HEAD
           <td><?php echo $status; ?></td>
           <td><button type="button" class="btn btn-danger" name="req_done"><a href="prosesstock.php?id_stock=<?php echo $ids; ?>" style="text-decoration: none; color: white;">Selesai</a></button></td>
+=======
+          <td><?php echo $stat; ?></td>
+          <td><button type="button" class="btn btn-warning"><a href="prosesstock.php?done=<?php echo $ids; ?>" style="text-decoration: none; color: white;">Selesai</a></button></td>
+>>>>>>> 75668a0a6626fce582cd04a211a4ac106be1a5e3
         </tr>
       <?php } ?>  
     </tbody>
