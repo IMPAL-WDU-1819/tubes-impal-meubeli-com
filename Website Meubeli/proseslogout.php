@@ -6,7 +6,6 @@ include ('proseslogin.php');
 		session_destroy();
 		echo "<script>
 		location.href='index.php';
-		alert('Sampai Jumpa Lagi :)');
 		</script>";
 		return true;
 	} else {

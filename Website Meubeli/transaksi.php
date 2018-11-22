@@ -14,13 +14,13 @@
 		$delete2 = mysqli_query($conn, "DELETE FROM cicilan WHERE id_transaksi = '$id_t'");
 		if($hal_t == 'BASIC'){
 			echo '<script type="text/javascript">
-                alert("Berhasil Hapus/Batalkan Transaksi");
+                alert("Berhasil Batalkan Transaksi");
                 window.location.href="transaksiuser.php";
             </script>';
 		}
 		else{
 			echo '<script type="text/javascript">
-                alert("Berhasil Hapus/Batalkan Transaksi");
+                alert("Berhasil Hapus Transaksi");
                 window.location.href="managetransaksi.php";
             </script>';
 		}
@@ -187,8 +187,4 @@
                 window.location.href="index.php";
             </script>';
 	}
-
-	//pesan sparepart
-
-
 ?>

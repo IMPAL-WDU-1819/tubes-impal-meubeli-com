@@ -48,7 +48,7 @@ include('proseslogin.php');
               if(login_check()){
                 if(login_hak() == 'ADMIN'){
             ?>
-            <li class="nav-item active"><a class="nav-link" href="#"> Selamat Datang, <?php echo $_SESSION['nama'] ?></a>
+            <li class="nav-item active"><a class="nav-link" href="pageuser.php"> Selamat Datang, <?php echo $_SESSION['nama'] ?></a>
             <li class="nav-item"><a class="nav-link" href="pageadmin.php">Manage User</a>
             </li>
             <li class="nav-item"><a class="nav-link" href="managetransaksi.php">Manage Transaksi</a>
@@ -67,7 +67,7 @@ include('proseslogin.php');
                 }
                 else if(login_hak() == 'SUPPLIER'){
             ?>
-            <li class="nav-item active"><a class="nav-link" href="#"> Selamat Datang, <?php echo $_SESSION['nama'] ?></a>
+            <li class="nav-item active"><a class="nav-link" href="pageuser.php"> Selamat Datang, <?php echo $_SESSION['nama'] ?></a>
             </li>
             <li class="nav-item"> <a class="nav-link" href="pagesupplier.php">Stock Request</a></li>
             <?php

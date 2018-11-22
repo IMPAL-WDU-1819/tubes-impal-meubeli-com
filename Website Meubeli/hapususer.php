@@ -10,6 +10,7 @@ include ('koneksi.php');
 	    </script>';	
 	} else {
 		echo '<script type="text/javascript">
+			alert("Gagal Hapus User"); 
 	        window.location.href="pageadmin.php";
 	    </script>';	
 	}

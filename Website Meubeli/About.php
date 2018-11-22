@@ -39,7 +39,7 @@ include('proseslogin.php');
               if(login_check()){
                 if(login_hak() == 'ADMIN'){
             ?>
-            <li class="nav-item active"><a class="nav-link" href="#"> Selamat Datang, <?php echo $_SESSION['nama'] ?></a>
+            <li class="nav-item active"><a class="nav-link" href="pageuser.php"> Selamat Datang, <?php echo $_SESSION['nama'] ?></a>
             <li class="nav-item"><a class="nav-link" href="pageadmin.php">Manage User</a>
             </li>
             <li class="nav-item"><a class="nav-link" href="managetransaksi.php">Manage Transaksi</a>
@@ -58,7 +58,7 @@ include('proseslogin.php');
                 }
                 else if(login_hak() == 'SUPPLIER'){
             ?>
-            <li class="nav-item active"><a class="nav-link" href="#"> Selamat Datang, <?php echo $_SESSION['nama'] ?></a>
+            <li class="nav-item active"><a class="nav-link" href="pageuser.php"> Selamat Datang, <?php echo $_SESSION['nama'] ?></a>
             </li>
             <li class="nav-item"> <a class="nav-link" href="pagesupplier.php">Stock Request</a></li>
             <?php
@@ -104,53 +104,6 @@ include('proseslogin.php');
       </div>
     </div>
     <hr>
-    <div class="container text-white bg-dark p-4">
-      <div class="row">
-        <div class="col-6 col-md-8 col-lg-7">
-          <div class="row text-center">
-            <div class="col-sm-6 col-md-4 col-lg-4 col-12">
-              <ul class="list-unstyled">
-                <li class="btn-link"> <a>Link anchor</a> </li>
-                <li class="btn-link"> <a>Link anchor</a> </li>
-                <li class="btn-link"> <a>Link anchor</a> </li>
-                <li class="btn-link"> <a>Link anchor</a> </li>
-                <li class="btn-link"> <a>Link anchor</a> </li>
-              </ul>
-            </div>
-            <div class="col-sm-6 col-md-4 col-lg-4 col-12">
-              <ul class="list-unstyled">
-                <li class="btn-link"> <a>Link anchor</a> </li>
-                <li class="btn-link"> <a>Link anchor</a> </li>
-                <li class="btn-link"> <a>Link anchor</a> </li>
-                <li class="btn-link"> <a>Link anchor</a> </li>
-                <li class="btn-link"> <a>Link anchor</a> </li>
-              </ul>
-            </div>
-            <div class="col-sm-6 col-md-4 col-lg-4 col-12">
-              <ul class="list-unstyled">
-                <li class="btn-link"> <a>Link anchor</a> </li>
-                <li class="btn-link"> <a>Link anchor</a> </li>
-                <li class="btn-link"> <a>Link anchor</a> </li>
-                <li class="btn-link"> <a>Link anchor</a> </li>
-                <li class="btn-link"> <a>Link anchor</a> </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 col-lg-5 col-6">
-          <address>
-          <strong>MyStoreFront, Inc.</strong><br>
-MEUBELI<br>
-Quitman, WA, 99110-0219<br>
-<abbr title="Phone">P:</abbr> (123) 456-7890
-          </address>
-          <address>
-          <strong>CEO</strong><br>
-          <a href="mailto:#">ceo@gmail.com</a>
-          </address>
-        </div>
-      </div>
-    </div>
     <div class="container text-white bg-dark p-4">
       <div class="row">
         <div class="col-6 col-md-8 col-lg-7">
